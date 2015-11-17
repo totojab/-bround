@@ -1,0 +1,48 @@
+<ion-modal view title="My Account" class="accountpage">
+    <div class="modal">
+        <ion-header-bar class="actu_header">
+            <i class="settingsicon ion-chevron-down icon_modal" ng-click="closeModal()"></i>
+            <h1 class="title">Settings </h1>
+        </ion-header-bar>
+
+        <ion-content>
+
+            <ion type="item-text-wrap">
+                <img class="profilpic" ng-src="{{profils.face}}">
+                <br>
+                <h2 class="profilname"><a class="lobster-font">{{profils.name}}</a>
+                    <a class="ion-edit" ng-click="editNameClick()"> </a>
+                    <div ng-show="showEdit">
+                        <input class="ech" type="text" placeholder="Your Name" ng-model="myName">
+                        <div class="ion-ios-color-wand" ng-click="addNewName(myName)">
+                            </input>
+                        </div>
+
+                    </div>
+
+                </h2>
+                <h3 class="email"> {{profils.email}} </h3>
+                <br>
+                <br>
+                <ion-list>
+                    <ion-item><i class="ion-music-note accounticon"></i> My Favorite Song is <a class="lobster-font">{{profils.FavoritedSong}}</a>
+                        <a class="ion-edit" ng-click="editFavClick()"> </a>
+                    </ion-item>
+
+                    <label class="item item-input" ng-show="showEditFav">
+                        <span class="input-label"> Your Favorite Song</span>
+                        <input type="text" ng-model="myFav">
+                        <a class="ion-ios-color-wand" ng-click="addNewFav(myFav)"> </a>
+                    </label>
+
+                    <ion-item><i class="ion-information accounticon"></i> Conditions of use <i class="ion-chevron-right" ng-click="goPolicy()"></i></ion-item>
+                    <ion-item> <i class="ion-help-buoy accounticon"></i> Support <i class="ion-chevron-right"></i></ion-item>
+                    <ion-item> <i class="ion-locked accounticon"></i> Privacy Policy <i class="ion-chevron-right"></i></ion-item>
+                    <ion-item> Deconnexion
+                        <a class="logoutbutton ion-log-out" ng-click="logout()"> </a>
+                    </ion-item>
+                </ion-list>
+
+        </ion-content>
+    </div>
+</ion-modal view>

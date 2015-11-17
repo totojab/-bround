@@ -1,0 +1,46 @@
+<ion-view view-title="Share a List" class="tab-dash">
+    <ion-content class="padding">
+
+        <label class="item item-input">
+            <a class="title-list">Title :</a>
+            <input class="name-list" type="text" placeholder="Name of your playlist">
+            </input>
+        </label>
+        <!-- Maybe put the Title on the Modal view ? -->
+
+        <form ng-submit='vm.addSong(vm.myId)'>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search your song" ng-model="vm.myId">
+            </label>
+        </form>
+
+        <div ng-show="vm.currentList.length==0" class="commentaire" ng-click="vm.moveBigButton()">
+            <div class="text-on-blurred-dash">
+                <i id="buttons" class="icon ion-ios-musical-notes music-icon icon-bottom"></i>
+                <br>
+                <p class="coms">Create a <a class="lobster-font">playlist</a>
+                    <p class="coms2">of maximum eleven <a class="lobster-font">songs</a>
+            </div>
+        </div>
+
+        <div collection-repeat="song in vm.currentList" item-height="25%" item-width="33%">
+            <span class="badge badge-assertive" ng-click="vm.removeSong($index)"><i class="ion-close-round badge-delete"></i></span>
+            <div back-img="{{song.face}}" ng-click="vm.playSong(song); vm.refreshBlurring(song)" class="image-collection-list base-class animation" ng-class="song.style"> </div>
+
+            <div ng-if="song.style == 'song-blurred'" class="text-on-blurred-image" ng-click="vm.playSong(song); vm.refreshBlurring(song)">
+
+                <p class="nametoartist">
+                    <br>
+                    <h4 class="name">
+                        {{song.name}}</h4>
+                    <p class="nametoartist"> {{song.artist}}</p>
+                </p>
+
+            </div>
+        </div>
+        <i ng-hide="vm.currentList.length==0" class="ion-ios-close-outline clear-button-dash" ng-click="vm.clearList()"></i>
+        <i ng-hide="vm.currentList.length==0" class="ion-ios-checkmark-outline send-button-dash" ng-click="vm.showFriends()"></i>
+
+    </ion-content>
+</ion-view>
