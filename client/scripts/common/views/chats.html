@@ -1,13 +1,19 @@
 <ion-view view-title="Audio Feed" class="chat-page">
-    <ion-nav-buttons side="left">
-        <i class="addbutton ion-person-add" ng-click="openModal()"></i>
-    </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-        <i class="addbutton ion-ios-people" ng-click="openModal1()"></i>
-    </ion-nav-buttons>
+
+    <ion-nav-bar>
+        <ion-nav-buttons side="left">
+            <i class="addbutton ion-person-add" ng-click="vm.showAddFriend()"></i>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <i class="addbutton ion-ios-people" ng-click="vm.showAllFriends()"></i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id} ">
+
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in vm.chats" type="item-text-wrap" ui-sref='tab.chatDetail({chatId: chat.id})'>
                 <img ng-src="{{chat.face}}">
                 <h2>{{chat.name}}</h2>
                 <p class="lastlist">{{chat.lastList}}</p>
@@ -16,6 +22,8 @@
                     Delete
                 </ion-option-button>
             </ion-item>
+
         </ion-list>
     </ion-content>
+
 </ion-view>

@@ -115,12 +115,12 @@ a {
     background-position: center center;
 }
 
-.base-class {
+.song-clean {
     -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
     transition: all 0.5s linear;
 }
 
-.base-class.song-blurred {
+.song-clean.song-blurred {
     -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s;
     transition: all cubic-bezier(0.42, 0.0, 1.0, 1.0) 0.5s;
     filter: blur(5px);

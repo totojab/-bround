@@ -22,8 +22,6 @@ module.exports = function(app) {
 
         // // ****** Fonctions recyclées depuis le list-detail ****
 
-        // vm.imageClass = ['', '', '', '', '', '', '', '', '', '', '', '', '', ''];
-
         vm.refreshBlurring = function(song) {
             if (song.style == 'song-blurred') {
                 song.style = '';
@@ -51,7 +49,13 @@ module.exports = function(app) {
         // }
 
         vm.inList = function(id) {
-            return _.contains(vm.currentList, id);
+            var res = false;
+            _.forEach(vm.currentList, function(song) {
+                if (song.id == id) {
+                    res = true;
+                }
+            })
+            return res;
         }
 
         // vm.swapIndexes = function(array, index1, index2) {
@@ -66,7 +70,7 @@ module.exports = function(app) {
             // if (!(vm.inList(id, vm.currentList) || vm.currentList.length > 10)) {
             if (vm.currentList.length < 10) {
                 var songToAdd = player.get(id);
-                if (songToAdd) {
+                if (songToAdd && !vm.inList(id)) {
                     vm.currentList.splice(vm.currentList.length, 0, {
                         id: songToAdd.id,
                         name: songToAdd.name,
@@ -85,8 +89,13 @@ module.exports = function(app) {
         }
 
         vm.removeSong = function(index) {
+            if (player.isSongPlaying(vm.currentList[index])) {
+                player.pause();
+                player.setPause();
+
+            }
             vm.currentList.splice(index, 1);
-        }
+        };
 
         vm.playSong = player.play;
         vm.stopSong = player.pause;

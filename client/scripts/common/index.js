@@ -16,8 +16,8 @@ module.exports = function(namespace) {
     var app = angular.module(fullname, ['ui.router', 'ionic', 'ngCordova']);
     // inject:folders start
     require('./controllers')(app);
-    require('./directives')(app);
-    require('./services')(app);
+require('./directives')(app);
+require('./services')(app);
     // inject:folders end
     app.namespace = app.namespace || {};
 
@@ -52,6 +52,16 @@ module.exports = function(namespace) {
             }
         })
 
+        .state('tab.chatDetail', {
+            url: '/chats/:chatId',
+            views: {
+                'chats': {
+                    template: require('./views/chatDetail.html'),
+                    controller: fullname + '.chatDetail as vm'
+                }
+            }
+        })
+
         .state('tab.favorites', {
             url: '/favorites',
             views: {
@@ -60,6 +70,16 @@ module.exports = function(namespace) {
                     controller: fullname + '.favorites as vm'
                 }
             }
+        })
+
+        .state('addFriend', {
+            url: '/addFriend',
+            template: require('./views/addFriend.html')
+        })
+
+        .state('allFriends', {
+            url: '/allFriends',
+            template: require('./views/allFriends.html')
         })
 
         .state('account', {

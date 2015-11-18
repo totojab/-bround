@@ -26,7 +26,7 @@
 
         <div collection-repeat="song in vm.currentList" item-height="25%" item-width="33%">
             <span class="badge badge-assertive" ng-click="vm.removeSong($index)"><i class="ion-close-round badge-delete"></i></span>
-            <div back-img="{{song.face}}" ng-click="vm.playSong(song); vm.refreshBlurring(song)" class="image-collection-list base-class animation" ng-class="song.style"> </div>
+            <div back-img="{{song.face}}" ng-click="vm.playSong(song); vm.refreshBlurring(song)" class="image-collection-list song-clean animation" ng-class="song.style"> </div>
 
             <div ng-if="song.style == 'song-blurred'" class="text-on-blurred-image" ng-click="vm.playSong(song); vm.refreshBlurring(song)">
 

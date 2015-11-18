@@ -92,8 +92,10 @@ module.exports = function(app) {
 
         var isSongPlaying = function(song) {
             if (audioElement.src === song.preview_url && isPlaying) {
-                return false;
+                return true;
             }
+
+            return false;
         }
 
         var play = function(song)  {
@@ -121,6 +123,16 @@ module.exports = function(app) {
 
             isPlaying: function() {
                 return isPLaying;
+            },
+
+            setPause: function() {
+                isPlaying = false;
+            },
+
+            isSongPlaying: isSongPlaying,
+
+            setPlay: function() {
+                isPlaying = true;
             },
 
             pause: pause,
