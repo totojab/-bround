@@ -7,10 +7,10 @@ module.exports = function(app) {
 
     function service() {
         var userInfo = {
-            firstName: 'Alexandre',
-            lastName: 'Attia',
+            name: 'Alexandre Attia',
             picture: 'https://media.licdn.com/media/AAEAAQAAAAAAAAKyAAAAJGU4ODY2YWYxLThiMjktNGMxYS1iMWY5LTE1NmJmMTI3ZDIxOQ.jpg',
             username: 'alexattia',
+            email: 'alexattia18@gmail.com',
             topSong: {
                 title: 'I Fall Apart',
                 artist: 'Rory Gallagher',
@@ -51,11 +51,21 @@ module.exports = function(app) {
             userInfo.favorites.push(song);
         }
 
+        var changeName = function(name) {
+            userInfo.name = name;
+        }
+
+        var changeTopSong = function(song) { //the argument here is not a song object but an object with 'title' 'artist' and 'year' attributes.
+            userInfo.topSong = song;
+        }
+
         return {
             all: all,
             favorites: favorites,
             removeFavorite: removeFavorite,
-            addFavorite: addFavorite
+            addFavorite: addFavorite,
+            changeName: changeName,
+            changeTopSong: changeTopSong
         };
 
     }

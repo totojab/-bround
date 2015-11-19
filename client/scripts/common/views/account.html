@@ -8,40 +8,59 @@
         <ion-content>
 
             <ion type="item-text-wrap">
-                <img class="profilpic" ng-src="{{profils.face}}">
+                <img class="profilpic" ng-src="{{vm.facePicture}}">
                 <br>
-                <h2 class="profilname"><a class="lobster-font">{{profils.name}}</a>
-                    <a class="ion-edit" ng-click="editNameClick()"> </a>
-                    <div ng-show="showEdit">
-                        <input class="ech" type="text" placeholder="Your Name" ng-model="myName">
-                        <div class="ion-ios-color-wand" ng-click="addNewName(myName)">
-                            </input>
-                        </div>
-
-                    </div>
-
+                <h2 class="profilname">
+                    <a class="lobster-font" ng-click="vm.editNameClick()" ng-show="!vm.showNameEdit">{{vm.userName}}</a>
+                    <form ng-submit="vm.validateNewName(vm.userName)" ng-show="vm.showNameEdit">
+                        <input class="" type="text" placeholder="Your name" ng-model="vm.userName">
+                        </input>
+                    </form>
                 </h2>
-                <h3 class="email"> {{profils.email}} </h3>
+                <h3 class="email"> {{vm.userEmail}} </h3>
+
                 <br>
                 <br>
-                <ion-list>
-                    <ion-item><i class="ion-music-note accounticon"></i> My Favorite Song is <a class="lobster-font">{{profils.FavoritedSong}}</a>
-                        <a class="ion-edit" ng-click="editFavClick()"> </a>
-                    </ion-item>
 
-                    <label class="item item-input" ng-show="showEditFav">
-                        <span class="input-label"> Your Favorite Song</span>
-                        <input type="text" ng-model="myFav">
-                        <a class="ion-ios-color-wand" ng-click="addNewFav(myFav)"> </a>
-                    </label>
+                <div class="list">
 
-                    <ion-item><i class="ion-information accounticon"></i> Conditions of use <i class="ion-chevron-right" ng-click="goPolicy()"></i></ion-item>
-                    <ion-item> <i class="ion-help-buoy accounticon"></i> Support <i class="ion-chevron-right"></i></ion-item>
-                    <ion-item> <i class="ion-locked accounticon"></i> Privacy Policy <i class="ion-chevron-right"></i></ion-item>
-                    <ion-item> Deconnexion
-                        <a class="logoutbutton ion-log-out" ng-click="logout()"> </a>
-                    </ion-item>
-                </ion-list>
+                    <a class="item item-icon-left" ng-click="vm.editTopClick()">
+                        <i class="icon ion-music-note"></i> Top song
+                        <span class="item-note" ng-show="!vm.showTopEdit">
+                            {{vm.userTopSong.artist}} - {{vm.userTopSong.title}} ({{vm.userTopSong.year}})
+                        </span>
+                    </a>
+                    <form ng-submit="vm.validateNewTop(vm.userTopSong)" ng-show="vm.showTopEdit">
+                        <input class="" type="text" placeholder="Title" ng-model="vm.userTopSong.title">
+                        </input>
+                        <input class="" type="text" placeholder="Artist" ng-model="vm.userTopSong.artist">
+                        </input>
+                        <input class="" type="text" placeholder="Year" ng-model="vm.userTopSong.year">
+                        </input>
+
+                        <button type="submit" class="button button-block button-positive" ng-click='vm.validateNewTop(vm.userTopSong)'>Save</button>
+
+                    </form>
+
+                    <a class="item item-icon-left">
+                        <i class="icon ion-information-circled"></i> Conditions of use
+                    </a>
+
+                    <a class="item item-icon-left">
+                        <i class="icon ion-locked"></i> Privacy Policy
+                        <span class="item-note">
+                    </a>
+
+                    <a class="item item-icon-left">
+                        <i class="icon ion-help-buoy"></i> Support
+                        <span class="item-note">
+                    </a>
+
+                    <a class="item item-icon-left" ng-click='vm.doLogOut()'>
+                        <i class="icon ion-log-out"></i> Log out
+                    </a>
+
+                </div>
 
         </ion-content>
     </div>

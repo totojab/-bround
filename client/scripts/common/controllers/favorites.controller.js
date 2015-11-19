@@ -17,43 +17,36 @@ module.exports = function(app) {
         vm.playSong = player.play;
         vm.isSongPlaying = player.isSongPlaying;
 
+        vm.removeSong = function(song) {
+            user.removeFavorite(song);
+        };
         // $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
 
-        $scope.shouldShowDelete = false;
-
-        $scope.data = {
-            showDelete: false
-        };
         // $scope.refreshFavorites = function(){
         //   $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray'); 
         //  };
 
         // $scope.profils = Profil.all();
-        $scope.showEdit = false;
-        $scope.editNameClick = function() {
-            $scope.showEdit = true;
-        };
+
         // $scope.logout = function() {
         //     User.destroySession();
         //     $scope.modal.hide();
         //     $state.go('connexion');
         // }
-        $scope.addNewName = function(myName) {
 
-            $scope.profils.name = myName;
-            $scope.showEdit = false;
+        // $scope.$on('$destroy', function() {
+        //     $scope.modal.remove();
+        // });
 
-        };
-        $scope.showEditFav = false;
-        $scope.editFavClick = function() {
-            $scope.showEditFav = true;
-        };
-        $scope.addNewFav = function(myFav) {
+        // $scope.openSong = function(song) {
+        //     $window.open(song.open_url, "_system");
+        // };
 
-            $scope.profils.FavoritedSong = myFav;
-            $scope.showEditFav = false;
-        };
+        vm.goPolicy = function() {
+            $state.go('policy');
+        }
 
+        // *************************> Modal Control <************************* MAYBE SHOULD BE A VIEW ? 
         vm.accountModal = $ionicModal.fromTemplate(require('../views/account.html'), {
             scope: $scope,
             animation: 'slide-in-up'
@@ -67,33 +60,51 @@ module.exports = function(app) {
             vm.accountModal.hide();
         };
 
-        // $scope.$on('$destroy', function() {
-        //     $scope.modal.remove();
-        // });
+        // $scope.data = {
+        //     showDelete: false
+        // };
+        var userInfo = user.all();
+        vm.userName = userInfo.name;
+        vm.facePicture = userInfo.picture;
+        vm.userEmail = userInfo.email;
 
-        vm.removeSong = function(song) {
-            user.removeFavorite(song);
+        vm.showNameEdit = false;
+        vm.editNameClick = function() {
+            vm.showNameEdit = true;
+        };
+        vm.validateNewName = function(myName) {
+            if (myName.replace(/\s/g, '') !== '') { //If user enters a blank string, his name won't be changed
+                user.changeName(myName);
+            }
+            vm.userName = user.all().name;
+            vm.showNameEdit = false;
         };
 
-        // $scope.openSong = function(song) {
-        //     $window.open(song.open_url, "_system");
-        // };
+        vm.userTopSong = userInfo.topSong
+        vm.showTopEdit = false;
+        vm.editTopClick = function() {
+            vm.showTopEdit = true;
+        };
+        vm.validateNewTop = function(myTop) {
+            if (myTop.title.replace(/\s/g, '') !== '' && myTop.artist.replace(/\s/g, '') !== '') { //If user enters a blank title or artist, his top song won't be changed
+                user.changeTopSong({
+                    title: myTop.title,
+                    artist: myTop.artist,
+                    year: myTop.year
+                });
+            console.log('here');
+            }
+            vm.userTopSong = user.all().topSong;
+            vm.showTopEdit = false;
+            console.log(vm.showTopEdit);
+        };
 
-        // $scope.playSong = function(song) {
-        //     if ($rootScope.media.src === song.preview_url && $scope.isPlaying) {
-        //         $rootScope.media.pause();      
-        //         $scope.isPlaying = false;
-        //         return null;
-        //     } else {
-        //         $rootScope.media.src = song.preview_url;      
-        //         $rootScope.media.play();      
-        //         $scope.isPlaying = true;
+        // vm.shouldShowDelete = false;
 
-        //     }  
-        // };
-        $scope.goPolicy = function() {
-            $state.go('policy');
-        }
+        vm.doLogOut = function() { //should be called after a validation box is displayed and accepted
+            vm.hideAccount();
+            $state.go('tab.home');
+        };
     }
 
     controller.$inject = deps;
