@@ -8,6 +8,8 @@
 
     <ion-content class="has-header padding">
         <div collection-repeat="song in vm.list.songs| limitTo: 11 |orderBy:random()" item-height="25%" item-width="33%">
+            <span class="badge badge-assertive" ng-click="vm.addToFavorites(song)"><i class="ion-android-favorite-outline"></i></span>
+            <span class="badge badge-assertive" ng-if='song.isFavorited'><i class="ion-android-favorite"></i></span>
 
             <div back-img="{{song.face}}" ng-click="vm.playSong(song)" class="image-collection-list song-clean animation" ng-class="{'song-blurred': song && vm.isSongPlaying(song)}"> </div>
 
@@ -19,7 +21,7 @@
 
                 <p class="nametoartist" ng-click="playSong(song); vm.refreshBlurring(song)">
                     <h4>
-                        {{song.name}}</h4>
+                        {{song.title}}</h4>
                     <p class="nametoartist"> {{song.artist}}</p>
 
                 </p>

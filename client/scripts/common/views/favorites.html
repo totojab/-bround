@@ -11,11 +11,11 @@
     <ion-content>
         <ion-list>
 
-            <ion-item ng-repeat="song in vm.favoriteSongs" class="item-avatar itemfav">
+            <ion-item ng-repeat="song in vm.favoriteSongs track by $index" class="item-avatar itemfav">
 
                 <img ng-src="{{song.face}}" ng-click="vm.playSong(song)"> <i class="ion-ios-play icone-play-pause" ng-if="!vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i><i class="ion-ios-pause icone-play-pause" ng-if="vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i>
 
-                <p href="#/tab/favorites/{{song.id}}" class="fav-item"><b>{{song.name}}</b> - <a class="artist">{{song.artist}}</a> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
+                <p href="#/tab/favorites/{{song.id}}" class="fav-item"><b>{{song.title}}</b> - <a class="artist">{{song.artist}}</a> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
 
                 <ion-option-button class="button-assertive" ng-click="vm.removeSong(song)">
                     <i class="ion-close-circled deletebutton"> </i>

@@ -20,14 +20,14 @@ module.exports = function(app) {
             status: 'Feeling Caillou',
             favorites: [{
                 id: 0,
-                name: 'Never Too Much',
+                title: 'Never Too Much',
                 artist: 'Luther Vandroos',
                 preview_url: 'https://p.scdn.co/mp3-preview/7a5b4002971319e124244094428c94ebe66bccf1',
                 open_url: 'http://open.spotify.com/track/3nFJbZCHP4d9vduKjJLdBL',
                 face: 'http://services.insidetameside.com/radio/vis/artists/Luther%20Vandross/Never%20too%20much.png'
             }, {
                 id: 1,
-                name: 'Dreaming',
+                title: 'Dreaming',
                 artist: 'Loletta Halloway',
                 preview_url: 'https://p.scdn.co/mp3-preview/bf7b5edcddeec3a704b77b504100f8565fca4d57',
                 open_url: 'https://open.spotify.com/track/26ppQqlihAxkrwHv4NNlq0',

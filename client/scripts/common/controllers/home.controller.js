@@ -73,7 +73,7 @@ module.exports = function(app) {
                 if (songToAdd && !vm.inList(id)) {
                     vm.currentList.splice(vm.currentList.length, 0, {
                         id: songToAdd.id,
-                        name: songToAdd.name,
+                        title: songToAdd.title,
                         artist: songToAdd.artist,
                         preview_url: songToAdd.preview_url,
                         face: songToAdd.face,
