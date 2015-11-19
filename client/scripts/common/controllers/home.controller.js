@@ -14,8 +14,6 @@ module.exports = function(app) {
 
         vm.currentList = [];
 
-        vm.isSongPlaying = player.isSongPlaying;
-
         // $localStorage.setObject('userFavoriteArray', []);
         // vm.chansons = player.all();
         // vm.chanson = null;
@@ -93,12 +91,11 @@ module.exports = function(app) {
         vm.removeSong = function(index) {
             if (player.isSongPlaying(vm.currentList[index])) {
                 player.pause();
-                player.setPause();
-
             }
             vm.currentList.splice(index, 1);
         };
 
+        vm.isSongPlaying = player.isSongPlaying;
         vm.playSong = player.play;
         vm.stopSong = player.pause;
 

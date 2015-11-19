@@ -15,6 +15,8 @@ module.exports = function(app) {
         activate();
 
         vm.list = chats.list($stateParams.chatId, $stateParams.listId);
+        vm.playSong = player.play;
+        vm.isSongPlaying = player.isSongPlaying;
 
         // $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
 
@@ -55,8 +57,6 @@ module.exports = function(app) {
             })
             player.pause();
         };
-
-        vm.playSong = player.play;
     }
 
     controller.$inject = deps;

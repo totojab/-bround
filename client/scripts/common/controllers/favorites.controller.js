@@ -18,6 +18,9 @@ module.exports = function(app) {
         vm.isSongPlaying = player.isSongPlaying;
 
         vm.removeSong = function(song) {
+            if (player.isSongPlaying(song)) {
+                player.pause();
+            }
             user.removeFavorite(song);
         };
         // $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
@@ -92,11 +95,9 @@ module.exports = function(app) {
                     artist: myTop.artist,
                     year: myTop.year
                 });
-            console.log('here');
             }
             vm.userTopSong = user.all().topSong;
             vm.showTopEdit = false;
-            console.log(vm.showTopEdit);
         };
 
         // vm.shouldShowDelete = false;
