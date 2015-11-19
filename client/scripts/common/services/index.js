@@ -3,6 +3,8 @@
 module.exports = function(app) {
     // inject:start
     require('./chats')(app);
+    require('./localStorage')(app);
     require('./player')(app);
+    require('./user')(app);
     // inject:end
 };

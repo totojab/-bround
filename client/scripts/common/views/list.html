@@ -1,0 +1,31 @@
+<ion-view view-title="{{vm.list.title}}" class="list-detail-page">
+
+    <ion-nav-bar>
+        <ion-nav-buttons>
+            <i class="ion-chevron-left" style="font-size:32px" ng-click="vm.goBack()"> </i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="has-header padding">
+        <div collection-repeat="song in vm.list.songs| limitTo: 11 |orderBy:random()" item-height="25%" item-width="33%">
+
+            <div back-img="{{song.face}}" ng-click="vm.playSong(song); vm.refreshBlurring(song)" class="image-collection-list song-clean animation" ng-class="song.style"> </div>
+
+            <div ng-if="song.style=='song-blurred'" class="text-on-blurred-image">
+
+            <!--     <i class="ion-android-favorite hearticon" style="font-size:32px" ng-if="containSong(myFavorites, song);" ng-click="removeSongFromFavorites(song.id)"> </i>
+
+                <i class="ion-android-favorite-outline hearticon" style="font-size:32px" ng-if="!containSong(myFavorites, song);" ng-click="addSongToFavorites(song)"> </i> -->
+
+                <p class="nametoartist" ng-click="playSong(song); vm.refreshBlurring(song)">
+                    <h4 ng-click="vm.playSong(song); vm.refreshBlurring(song)">
+                        {{song.name}}</h4>
+                    <p class="nametoartist" ng-click="vm.playSong(song); vm.refreshBlurring(song)"> {{song.artist}}</p>
+
+                </p>
+            </div>
+
+        </div>
+    </ion-content>
+
+</ion-view>

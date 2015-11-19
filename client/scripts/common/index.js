@@ -62,6 +62,16 @@ require('./services')(app);
             }
         })
 
+        .state('tab.list', {
+            url: '/chats/:chatId/list/:listId',
+            views: {
+                'chats': {
+                    template: require('./views/list.html'),
+                    controller: fullname + '.list as vm'
+                }
+            }
+        })
+
         .state('tab.favorites', {
             url: '/favorites',
             views: {
@@ -72,21 +82,6 @@ require('./services')(app);
             }
         })
 
-        .state('addFriend', {
-            url: '/addFriend',
-            template: require('./views/addFriend.html')
-        })
-
-        .state('allFriends', {
-            url: '/allFriends',
-            template: require('./views/allFriends.html')
-        })
-
-        .state('account', {
-            url: '/account',
-            template: require('./views/account.html'),
-            controller: fullname + '.home as vm'
-        });
     };
 
     configRoutes.$inject = configRoutesDeps;

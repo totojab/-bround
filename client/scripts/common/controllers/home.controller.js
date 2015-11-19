@@ -6,13 +6,15 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$state', app.name + '.player', '$ionicModal']; //$localstorage to add
+    var deps = ['$scope', '$state', app.name + '.player', '$ionicModal']; //$localstorage to add
 
-    function controller($state, player, $ionicModal) {
+    function controller($scope, $state, player, $ionicModal) {
         var vm = this;
         vm.controllername = fullname;
 
         vm.currentList = [];
+
+        vm.isSongPlaying = player.isSongPlaying;
 
         // $localStorage.setObject('userFavoriteArray', []);
         // vm.chansons = player.all();
@@ -22,19 +24,19 @@ module.exports = function(app) {
 
         // // ****** Fonctions recyclées depuis le list-detail ****
 
-        vm.refreshBlurring = function(song) {
-            if (song.style == 'song-blurred') {
-                song.style = '';
+        // vm.refreshBlurring = function(song) {
+        //     if (song.style == 'song-blurred') {
+        //         song.style = '';
 
-            } else {
-                _.forEach(vm.currentList, function(item) {
-                    item.style = '';
-                });
+        //     } else {
+        //         _.forEach(vm.currentList, function(item) {
+        //             item.style = '';
+        //         });
 
-                song.style = 'song-blurred';
-            }
+        //         song.style = 'song-blurred';
+        //     }
 
-        };
+        // };
 
         // // ****** Fonctions auxiliaires ****
 
@@ -108,21 +110,20 @@ module.exports = function(app) {
             $state.go('tab.account');
         };
 
-        // // ******************** Modal Contl ************************
-        // $ionicModal.fromTemplateUrl('templates/sending-to-friends.html', {
-        //     scope: vm,
-        //     animation: 'slide-in-up'
-        // }).then(function(modal) {
-        //     vm.modal = modal
-        // })
+        // ******************** Modal Contl ************************
+
+        vm.sendToFriendsModal = $ionicModal.fromTemplate(require('../views/sendToFriends.html'), {
+            scope: $scope,
+            animation: 'slide-in-up'
+        })
 
         vm.showFriends = function() {
-            vm.modal.show();
+            vm.sendToFriendsModal.show();
         }
 
-        // vm.closeModal = function() {
-        //     vm.modal.hide();
-        // };
+        vm.hideSendToFriends = function() {
+            vm.sendToFriendsModal.hide();
+        };
 
         // vm.$on('$destroy', function() {
         //     vm.modal.remove();

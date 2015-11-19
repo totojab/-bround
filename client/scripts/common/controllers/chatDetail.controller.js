@@ -15,30 +15,29 @@ module.exports = function(app) {
         activate();
 
         vm.chat = chats.get($stateParams.chatId);
-        vm.lists = player.all();
-        vm.chansons = player.all();
+        vm.lists = chats.get($stateParams.chatId).lists;
 
-        $ionicModal.fromTemplateUrl('templates/sending-to-friends.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal
-        })
+        // $ionicModal.fromTemplateUrl('templates/sending-to-friends.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.modal = modal
+        // })
 
-        $scope.forwardList = function(index) {
-            $scope.modal.show();
-        }
+        // $scope.forwardList = function(index) {
+        //     $scope.modal.show();
+        // }
 
-        $scope.closeModal = function() {
-            $scope.modal.hide();
-        };
+        // $scope.closeModal = function() {
+        //     $scope.modal.hide();
+        // };
 
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-        });
+        // $scope.$on('$destroy', function() {
+        //     $scope.modal.remove();
+        // });
 
-        $scope.remove = function(list) {
-            ListLibrary.remove(list);
+        vm.remove = function(list) {
+            chats.removeList(chatId,listId);
         };
 
         vm.goBack = function() {

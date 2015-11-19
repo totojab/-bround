@@ -11,13 +11,15 @@ module.exports = function(app) {
             id: 0,
             name: 'Eliott Jabès',
             contactId: 1,
-            lastList: 'Sunset in Da Morning', // to be integrated to 'lists'
+            lastList: 'Sunset in the Morning', // to be integrated to 'lists'
             face: 'http://www.dschool.fr/wp-content/uploads/2015/06/EliottJabes.jpg',
             email: 'eliototo@gmail.com',
             lists: [{
-                listId: '1',
+                listId: 0,
                 received: true,
-                title: 'mytitle',
+                title: 'Sunset in the Morning',
+                comment: 'comment',
+                receivedOn: '11/10/02/23:00',
                 songs: [{
                     id: 4,
                     name: 'Roxanne',
@@ -32,35 +34,78 @@ module.exports = function(app) {
                     preview_url: 'https://p.scdn.co/mp3-preview/5cb2be9e55a7eff78eeac5f35fb584bb47f444e7',
                     open_url: 'https://open.spotify.com/track/06FcMPcosZg13x2QODDDK6',
                     face: 'https://i.scdn.co/image/91205a1c80960d7055f8ed1bbe022f195e1767a4'
+                }, {
+                    id: 6,
+                    name: 'Candy\'s Room',
+                    artist: 'Bruce Springsteen',
+                    preview_url: 'https://p.scdn.co/mp3-preview/f34abf05a7cba0b94c72e84178d9b3a6a72bcbe1',
+                    open_url: 'https://open.spotify.com/track/3p7W5VvPBZmuvkagBE2RbR',
+                    face: 'https://i.scdn.co/image/26d8c4db7622f1adecbb7ffc28a4dcdd8be907ac'
+                }, {
+                    id: 7,
+                    name: 'Voyager',
+                        artist: 'Daft Punk',
+                        preview_url: 'https://p.scdn.co/mp3-preview/90f22d693596f88ec9f07381eabe16de81032b7b',
+                        open_url: 'https://open.spotify.com/track/7cMFjxhbXBpOlais7KMF3j',
+                        face: 'https://i.scdn.co/image/ed01f028698b4211343f02109196939cfeadd06b'
+                }, {
+                    id: 8,
+                    name: 'California Roll',
+                        artist: 'Snoop Dogg',
+                        preview_url: 'https://p.scdn.co/mp3-preview/9b31322fece92d59789d403e0dfec3f5a5c7c5b6',
+                        open_url: 'https://open.spotify.com/track/1LmOaMuUPQD6BrK9fuGFa8',
+                        face: 'https://i.scdn.co/image/33a10cd598e200aabb95e817387e277fc74607ca'
+                }, {
+                    id: 9,
+                    name: 'Walk of Life',
+                    artist: 'Dire Straits',
+                    preview_url: 'https://p.scdn.co/mp3-preview/687ee71b2d17a374732d4666b608424ebdd8df68',
+                    open_url: 'https://open.spotify.com/track/7w4Tbkbx081vRJa8ol56Qf',
+                    face: 'https://i.scdn.co/image/2c8cf891d246b0aadf95a2c483b5b243aeda8a41'
                 }]
-
             }]
         }, {
             id: 1,
             name: 'Alexandre Attia',
             lastList: 'Sunshine in Da Evening',
             face: 'https://media.licdn.com/media/AAEAAQAAAAAAAAKyAAAAJGU4ODY2YWYxLThiMjktNGMxYS1iMWY5LTE1NmJmMTI3ZDIxOQ.jpg',
-            email: 'alexandre.attia@wanadoo.fr'
+            email: 'alexandre.attia@wanadoo.fr',
+            lists: []
         }, {
-            id: 1,
+            id: 2,
             name: 'Le Krull',
             lastList: 'Doucement le matin ...',
-            face: 'http://www.unmondeailleurs.net/wp-content/uploads/antillais_guadeloupe.jpg'
+            face: 'http://www.unmondeailleurs.net/wp-content/uploads/antillais_guadeloupe.jpg',
+            lists: [],
 
         }];
 
-        var get = function(id) {
-            return chats[id];
+        var all = function() {
+            return chats;
+        }
+
+        var get = function(chatId) { //Id est à prendre au sens d'index 
+            return chats[chatId];
+        }
+
+        var list = function(chatId, listId) {
+            return chats[chatId].lists[listId]
+        }
+
+        var remove = function(chat) {
+            chats.splice(chats.indexOf(chat), 1);
+        }
+
+        var removeList = function(chatId, listId) {
+            chats[chatId].lists.splice(listId, 1);
         }
 
         return {
-            all: function() {
-                return chats;
-            },
-            remove: function(chat) {
-                chats.splice(chats.indexOf(chat), 1);
-            },
-            get: get
+            all: all,
+            get: get,
+            remove: remove,
+            list: list,
+            removeList: removeList
         };
 
     }

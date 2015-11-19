@@ -1,14 +1,17 @@
-<ion-modal view title="Add New Friend" class="newfriendpage">
+<!-- TO DO  -->
+
+
+<ion-modal view title="Select Friends" class="sending-friends-page">
     <div class="modal">
 
         <ion-header-bar class="actu_header">
-            <i class=" ion-chevron-down icon_modal" ng-click="hideAddFriend()"></i>
-            <h1 class="title">Add New Friend</h1>
+            <i class=" ion-chevron-down icon_modal" ng-click="vm.hideSendToFriends()"></i>
+            <h1 class="title">Select some Friend(s) !</h1>
         </ion-header-bar>
 
         <ion-content>
             <div class="list list-inset">
-                <label class="item item-input">
+                <label class="item item-input " style="border-radius: 30px;">
                     <i class="icon ion-search placeholder-icon"></i>
                     <input type="text" placeholder="Search a Friend" ng-model="query">
 
@@ -22,16 +25,15 @@
                     </label> <a class="friend-name">{{friend.name}} </a>
                 </li>
             </ul>
-            
             <div ng-show="query==''">
                 <i class="icon ion-search searchicon"></i>
-                <p class="coms">In order to find a new Friend,
-                    <p class="coms">enter his 'tal' name
+                <p class="coms">In order to send your list to a <a class="lobster-font">bround</a>,
+                    <p class="coms">enter his name
             </div>
             <div>
-                <p ng-show="counterPositive()" class="addarrow">Add {{selectedCounter}} friend<a ng-hide="counterMoreOne()">s</a> <i class="ion-arrow-graph-up-right"></i></p>
+                <p ng-show="counterPositive()" class="addarrow lobster-font">Send to {{selectedCounter}} bround<a ng-hide="counterMoreOne()">s</a> <i class="ion-arrow-graph-up-right"></i></p>
             </div>
-        </ion-content>
 
+        </ion-content>
     </div>
 </ion-modal view>

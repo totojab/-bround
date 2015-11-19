@@ -82,66 +82,71 @@ module.exports = function(app) {
             face: 'https://i.scdn.co/image/2c8cf891d246b0aadf95a2c483b5b243aeda8a41'
         }];
 
-        var isPlaying = false;
+        var all = function() {
+            return chansons;
+        }
+
+        var playing = false;
+        var isPlaying = function() {
+            return pLaying;
+        };
 
         var audioElement = document.createElement('audio');    
 
         var get = function(id) {
             return chansons[id];
-        }
+        };
 
         var isSongPlaying = function(song) {
-            if (audioElement.src === song.preview_url && isPlaying) {
-                return true;
-            }
-
-            return false;
-        }
+            return (audioElement.src === song.preview_url && playing)
+        };
 
         var play = function(song)  {
-            if (audioElement.src === song.preview_url && isPlaying) {
+            if (audioElement.src === song.preview_url && playing) {
                 audioElement.pause();      
-                isPlaying = false;
+                playing = false;
             } else {
                 audioElement.src = song.preview_url;      
                 audioElement.play();      
-                isPlaying = true;
+                playing = true;
             }  
-        }
+        };
 
         var pause = function() {    
             audioElement.pause();    
-            isPlaying = false;  
+            playing = false;  
+        };
+
+        var setPause = function() {
+            playing = false;
+        };
+
+        var setPlay = function() {
+            playing = true;
+        };
+
+        var playPause = function() {
+            playing = !playing;
         };
 
         return {
-            all: function() {
-                return chansons;
-            },
+            all: all,
 
             get: get,
 
-            isPlaying: function() {
-                return isPLaying;
-            },
+            isPlaying: isPlaying,
 
-            setPause: function() {
-                isPlaying = false;
-            },
+            setPause: setPause,
 
             isSongPlaying: isSongPlaying,
 
-            setPlay: function() {
-                isPlaying = true;
-            },
+            setPlay: setPlay,
 
             pause: pause,
 
             play: play,
 
-            playPause: function() {
-                isPlaying = !isPlaying;
-            }
+            playPause: playPause
 
         };
 
