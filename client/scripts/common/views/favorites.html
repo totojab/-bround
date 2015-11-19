@@ -15,7 +15,8 @@
 
                 <img ng-src="{{song.face}}" ng-click="vm.playSong(song)"> <i class="ion-ios-play icone-play-pause" ng-if="!vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i><i class="ion-ios-pause icone-play-pause" ng-if="vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i>
 
-                <p href="#/tab/favorites/{{song.id}}" class="fav-item"><b>{{song.title}}</b> - <a class="artist">{{song.artist}}</a> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
+                <p class="fav-item"><b>{{song.title}}</b> - <span class="artist">{{song.artist}}</span> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
+                <h5>Added on: {{song.favoritedOn}}, sent by: {{song.favoritedFrom}}</h5>
 
                 <ion-option-button class="button-assertive" ng-click="vm.removeSong(song)">
                     <i class="ion-close-circled deletebutton"> </i>

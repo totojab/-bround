@@ -1,0 +1,35 @@
+'use strict';
+var controllername = 'login';
+
+module.exports = function(app) {
+    var fullname = app.name + '.' + controllername;
+    /*jshint validthis: true */
+
+    var deps = ['$state'];
+
+    function controller($state) {
+        var vm = this;
+        vm.controllername = fullname;
+        var activate = function() {};
+        activate();
+
+        vm.credentials = {};
+        vm.isUserNew = false;
+        vm.changeLoginMode = function() {
+            vm.isUserNew = !vm.isUserNew;
+        };
+
+        vm.connect = function() {
+            if (vm.credentials.username === 'Alex' && vm.credentials.password === 'toto') {
+                $state.go('tab.home');
+            }
+        };
+
+        vm.createUser = function() {
+            // $state.go('tab.home');
+        };
+    }
+
+    controller.$inject = deps;
+    app.controller(fullname, controller);
+};

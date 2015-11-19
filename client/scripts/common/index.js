@@ -16,20 +16,27 @@ module.exports = function(namespace) {
     var app = angular.module(fullname, ['ui.router', 'ionic', 'ngCordova']);
     // inject:folders start
     require('./controllers')(app);
-require('./directives')(app);
-require('./services')(app);
+    require('./directives')(app);
+    require('./services')(app);
     // inject:folders end
     app.namespace = app.namespace || {};
 
     var configRoutesDeps = ['$stateProvider', '$urlRouterProvider'];
     var configRoutes = function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/tab/home');
+        $urlRouterProvider.otherwise('/login');
         $stateProvider
 
             .state('tab', {
             url: '/tab',
             abstract: true,
             template: require('./views/tabs.html')
+        })
+
+        .state('login', {
+            url: '/login',
+            template: require('./views/login.html'),
+            controller: fullname + '.login as vm'
+
         })
 
         .state('tab.home', {

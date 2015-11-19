@@ -7,5 +7,6 @@ module.exports = function(app) {
     require('./favorites.controller')(app);
     require('./home.controller')(app);
     require('./list.controller')(app);
+    require('./login.controller')(app);
     // inject:end
 };
