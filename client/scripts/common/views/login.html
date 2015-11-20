@@ -1,0 +1,46 @@
+<ion-view class="login-view">
+    <ion-content>
+
+        <img class="homepage_logo" src="images/app/logo.png" />
+
+        <!--         <vid-bg resources="resources" poster="poster" full-screen="fullScreen" muted="muted" z-index="zIndex" play-info="playInfo" pause-play="pausePlay"></vid-bg> -->
+
+        <form ng-submit="vm.connect()" class='login-form' ng-show='!vm.isUserNew'>
+            <div class="list">
+                <label class="item item-input">
+                    <input class="input-text" type="text" placeholder="Username" ng-model="vm.credentials.username">
+                </label>
+
+                <label class="item item-input">
+                    <input class="input-text" type="password" ng-model="vm.credentials.password" placeholder="Password">
+                </label>
+
+                <button class="button loginbutton" type="submit">Log In</button>
+            </div>
+        </form>
+
+        <form ng-submit="vm.createUser(vm.credentials)" class='login-form' ng-show='vm.isUserNew'>
+            <div class="list">
+
+                <label class="item item-input">
+                    <span class="input-label">Pick your username</span>
+                    <input class="input-text" type="text" placeholder="Username" ng-model="vm.credentials.username">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Create a password</span>
+                    <input class="input-text" type="password" ng-model="vm.credentials.password" placeholder="Password">
+                </label>
+
+                <button class="button loginbutton" type="submit">Sign up</button>
+            </div>
+        </form>
+
+        <div ng-click='vm.changeLoginMode()'>
+            <label class="item item-input" ng-click='vm.showSignUp()'>
+                <span class="input-label" ng-click='vm.showSignUp()'>New on Bround ? Sign up !</span>
+            </label>
+        </div>
+
+    </ion-content>
+</ion-view>

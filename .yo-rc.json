@@ -1,0 +1,13 @@
+{
+  "generator-mcfly": {
+    "filenameCase": "camel",
+    "filenameSuffix": true,
+    "appname": "test",
+    "clientFolder": "client",
+    "ionic": true,
+    "ngCordova": true,
+    "fontawesome": true,
+    "bootstrap": false,
+    "material": false
+  }
+}

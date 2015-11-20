@@ -1,0 +1,29 @@
+<ion-view view-title="{{vm.chat.name}}" class="chat-detail-page">
+    <ion-nav-bar>
+        <ion-nav-buttons>
+            <i class="ion-chevron-left back-icon" style="" ng-click="vm.goBack()"> </i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="list in vm.lists" type="item-text-wrap" ui-sref='tab.list({chatId: vm.chat.id,listId: list.listId})'>
+                <img ng-src="{{vm.chat.face}}">
+                <img class="image1" ng-src="{{list.songs[1].face}}">
+                <img class="image2" ng-src="{{list.songs[2].face}}">
+                <img class="image3" ng-src="{{list.songs[3].face}}">
+                <img class="image4" ng-src="{{list.songs[4].face}}">
+                <h2>{{list.title}}</h2>
+                <p class="lobster-font"> Received on {{list.receivedOn}}</p>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <ion-option-button class="button-black" ng-click="forwardList($index)">
+                    <i class="icon ion-forward"></i>
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+
+
+<!-- href="#/tab/chats/{{vm.chat.id}}/lists/{{vm.list.id}}" -->

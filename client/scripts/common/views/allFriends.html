@@ -1,0 +1,30 @@
+<ion-modal view title="All Friend" class="newfriendpage">
+    <div class="modal">
+
+        <ion-header-bar class="actu_header">
+            <i class=" ion-chevron-down icon_modal" ng-click="hideAllFriends()"></i>
+            <h1 class="title">All my Friends</h1>
+        </ion-header-bar>
+
+        <ion-content>
+
+            <ion-list>
+
+                <ion-item class="list list-inset">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" placeholder="Search a Friend" ng-model="query">
+                    </label>
+
+                </ion-item>
+                <ion-item ng-repeat="friend in chats | filter:query" ng-click="clickFriend($index)">
+                    {{friend.name}} - {{friend.friendClicked}} - <a ng-hide="{{friend.friendClicked}}"> Friends for x years</a>
+                    <ion-option-button class="button-positive" ng-click="">
+                        <i class="ion-ios-play-outline"></i>Send
+                    </ion-option-button>
+                </ion-item>
+
+        </ion-content>
+
+    </div>
+</ion-modal view>
