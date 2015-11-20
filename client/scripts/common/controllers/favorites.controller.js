@@ -89,7 +89,7 @@ module.exports = function(app) {
             vm.showTopEdit = true;
         };
         vm.validateNewTop = function(myTop) {
-            if (myTop.title.replace(/\s/g, '') !== '' && myTop.artist.replace(/\s/g, '') !== '') { //If user enters a blank title or artist, his top song won't be changed
+            if (myTop.title.replace(/\s/g, '') !== '') { //If user enters a blank title or artist, his top song won't be changed
                 user.changeTopSong({
                     title: myTop.title,
                     artist: myTop.artist,
@@ -104,7 +104,7 @@ module.exports = function(app) {
 
         vm.doLogOut = function() { //should be called after a validation box is displayed and accepted
             vm.hideAccount();
-            $state.go('tab.home');
+            $state.go('login');
         };
     }
 
