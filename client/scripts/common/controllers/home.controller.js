@@ -56,7 +56,7 @@ module.exports = function(app) {
                 }
             })
             return res;
-        }
+        };
 
         // vm.swapIndexes = function(array, index1, index2) {
         //     var tempArray = array;
@@ -82,11 +82,11 @@ module.exports = function(app) {
                 }
                 vm.myId = '';
             }
-        }
+        };
 
         vm.clearList = function() {
             vm.currentList = [];
-        }
+        };
 
         vm.removeSong = function(index) {
             if (player.isSongPlaying(vm.currentList[index])) {
@@ -101,7 +101,7 @@ module.exports = function(app) {
 
         vm.validateCurrentList = function() {
 
-        }
+        };
 
         vm.account = function() {
             $state.go('tab.account');
@@ -112,11 +112,11 @@ module.exports = function(app) {
         vm.sendToFriendsModal = $ionicModal.fromTemplate(require('../views/sendToFriends.html'), {
             scope: $scope,
             animation: 'slide-in-up'
-        })
+        });
 
         vm.showFriends = function() {
             vm.sendToFriendsModal.show();
-        }
+        };
 
         vm.hideSendToFriends = function() {
             vm.sendToFriendsModal.hide();

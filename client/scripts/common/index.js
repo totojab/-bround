@@ -79,6 +79,26 @@ module.exports = function(namespace) {
             }
         })
 
+        .state('tab.friends', {
+            url: '/friends',
+            views: {
+                'chats': {
+                    template: require('./views/friends.html'),
+                    controller: fullname + '.friends as vm'
+                }
+            }
+        })
+
+        .state('tab.friendProfile', {
+            url: '/friendProfile/:friendId',
+            views: {
+                'chats': {
+                    template: require('./views/friendProfile.html'),
+                    controller: fullname + '.friendProfile as vm'
+                }
+            }
+        })
+
         .state('tab.favorites', {
             url: '/favorites',
             views: {
@@ -87,7 +107,7 @@ module.exports = function(namespace) {
                     controller: fullname + '.favorites as vm'
                 }
             }
-        })
+        });
 
     };
 

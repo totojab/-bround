@@ -5,6 +5,8 @@ module.exports = function(app) {
     require('./chat.controller')(app);
     require('./chatDetail.controller')(app);
     require('./favorites.controller')(app);
+    require('./friendProfile.controller')(app);
+    require('./friends.controller')(app);
     require('./home.controller')(app);
     require('./list.controller')(app);
     require('./login.controller')(app);

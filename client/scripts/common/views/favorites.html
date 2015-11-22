@@ -9,22 +9,29 @@
     </ion-nav-bar>
 
     <ion-content>
-        <ion-list>
 
-            <ion-item ng-repeat="song in vm.favoriteSongs track by $index" class="item-avatar itemfav">
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model='vm.favoritesFilter'>
+            </label>
+            <button class="button button-clear" ng-click="vm.clearInput()">
+                Cancel
+            </button>
+        </div>
+
+        <ion-list>
+            <ion-item ng-repeat="song in vm.favoriteSongs | filter:vm.favoritesFilter track by $index" class="item-avatar itemfav">
 
                 <img ng-src="{{song.face}}" ng-click="vm.playSong(song)"> <i class="ion-ios-play icone-play-pause" ng-if="!vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i><i class="ion-ios-pause icone-play-pause" ng-if="vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i>
 
-                <p class="fav-item"><b>{{song.title}}</b> - <span class="artist">{{song.artist}}</span> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
+                <p class="fav-item"><b>{{song.title}}</b> -
+                    <span class="artist">{{song.artist}}</span> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
                 <h5>Added on: {{song.favoritedOn}}, sent by: {{song.favoritedFrom}}</h5>
 
                 <ion-option-button class="button-assertive" ng-click="vm.removeSong(song)">
                     <i class="ion-close-circled deletebutton"> </i>
                 </ion-option-button>
-
-                <!--    <ion-delete-button class="ion-minus-circled"
-                       ng-click="items.splice($index, 1)">
-    </ion-delete-button> -->
 
             </ion-item>
         </ion-list>

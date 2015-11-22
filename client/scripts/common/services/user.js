@@ -17,6 +17,7 @@ module.exports = function(app) {
                 album: 'Rory Gallagher',
                 year: '1971'
             },
+            score : '182',
             status: 'Feeling Caillou',
             favorites: [{
                 id: 0,
@@ -26,7 +27,7 @@ module.exports = function(app) {
                 open_url: 'http://open.spotify.com/track/3nFJbZCHP4d9vduKjJLdBL',
                 face: 'http://services.insidetameside.com/radio/vis/artists/Luther%20Vandross/Never%20too%20much.png',
                 favoritedOn: '19/11/2015/18:18',
-                favoritedFrom: 'Eliott Jabès',
+                favoritedFrom: 'Eliott Jabès'
             }, {
                 id: 1,
                 title: 'Dreaming',
@@ -36,7 +37,9 @@ module.exports = function(app) {
                 face: 'http://www.vinyl-minded.com/images/6/671867.jpg',
                 favoritedOn: '19/11/2015/18:20',
                 favoritedFrom: 'Le Krull'
-            }]
+            }],
+            friends: ['01', '02', '03']
+
         };
 
         var all = function() {
@@ -49,19 +52,23 @@ module.exports = function(app) {
 
         var removeFavorite = function(song) {
             userInfo.favorites.splice(userInfo.favorites.indexOf(song), 1);
-        }
+        };
 
         var addFavorite = function(song) {
             userInfo.favorites.push(song);
-        }
+        };
 
         var changeName = function(name) {
             userInfo.name = name;
-        }
+        };
 
-        var changeTopSong = function(song) { //the argument here is not a song object but an object with 'title' 'artist' and 'year' attributes.
+        var changeStatus = function(status) {
+            userInfo.status = status;
+        };
+
+        var changeTopSong = function(song) {
             userInfo.topSong = song;
-        }
+        };
 
         return {
             all: all,
@@ -69,6 +76,7 @@ module.exports = function(app) {
             removeFavorite: removeFavorite,
             addFavorite: addFavorite,
             changeName: changeName,
+            changeStatus: changeStatus,
             changeTopSong: changeTopSong
         };
 

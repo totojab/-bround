@@ -40,32 +40,21 @@ module.exports = function(app) {
 
         vm.showAddFriend = function() {
             vm.addFriendModal.show();
-        }
+        };
 
         $scope.hideAddFriend = function() {
             vm.addFriendModal.hide();
         };
 
-        vm.allFriendsModal = $ionicModal.fromTemplate(require('../views/allFriends.html'), {
-            scope: $scope,
-            animation: 'slide-in-up'
-        })
-
-        vm.showAllFriends = function() {
-            vm.allFriendsModal.show();
-        }
-
-        $scope.hideAllFriends = function() {
-            vm.allFriendsModal.hide();
+        vm.goFriends = function() {
+            $state.go('tab.friends');
         };
 
-        // $scope.$on('$destroy', function() { WHY ?
-        //     vm.showAddFriend.remove();
-        // });
+        $scope.$on('$destroy', function() {
+            vm.addFriendModal.remove();
+        });
 
-        var activate = function() {
-
-        };
+        var activate = function() {};
         activate();
 
         // WHATS THAT ????

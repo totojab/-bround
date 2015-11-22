@@ -17,7 +17,16 @@
                         </input>
                     </form>
                 </h2>
+
                 <h3 class="email"> {{vm.userEmail}} </h3>
+
+                <h2 class="profilname">
+                    <a class="lobster-font" ng-click="vm.editStatusClick()" ng-show="!vm.showStatusEdit">{{vm.userStatus}}</a>
+                    <form ng-submit="vm.validateNewStatus(vm.userStatus)" ng-show="vm.showStatusEdit">
+                        <input class="" type="text" placeholder="Your status" ng-model="vm.userStatus">
+                        </input>
+                    </form>
+                </h2>
 
                 <br>
                 <br>
@@ -43,6 +52,15 @@
                     </form>
 
                     <a class="item item-icon-left">
+                        <i class="icon ion-trophy"></i> Number of lists
+                        <span class="item-note">
+                            {{vm.userScore}}
+                        </span>
+                    </a>
+
+                    <!-- PUT A SPACE HERE, MAYBE CARDS ??? -->
+
+                    <a class="item item-icon-left">
                         <i class="icon ion-information-circled"></i> Conditions of use
                     </a>
 
@@ -61,6 +79,8 @@
                     </a>
 
                 </div>
+
+                
 
         </ion-content>
     </div>

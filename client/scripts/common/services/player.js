@@ -84,7 +84,7 @@ module.exports = function(app) {
 
         var all = function() {
             return chansons;
-        }
+        };
 
         var playing = false;
         var isPlaying = function() {
@@ -98,7 +98,7 @@ module.exports = function(app) {
         };
 
         var isSongPlaying = function(song) {
-            return (audioElement.src === song.preview_url && playing)
+            return (audioElement.src === song.preview_url && playing);
         };
 
         var play = function(song)  {

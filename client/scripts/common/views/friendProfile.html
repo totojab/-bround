@@ -1,67 +1,52 @@
-<ion-modal view title="My Account" class="accountpage">
-    <div class="modal">
-        <ion-header-bar class="actu_header">
-            <i class="settingsicon ion-chevron-down icon_modal" ng-click="vm.hideAccount()"></i>
-            <h1 class="title">Settings </h1>
-        </ion-header-bar>
+<ion-view view-title="{{vm.friend.name}}" class="accountpage">
 
-        <ion-content>
+    <ion-nav-bar class="actu_header">
+        <ion-nav-buttons>
+            <i class="settingsicon ion-chevron-left icon_modal" ng-click="vm.goFriendsList()"></i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
 
-            <ion type="item-text-wrap">
-                <img class="profilpic" ng-src="{{vm.facePicture}}">
-                <br>
-                <h2 class="profilname">
-                    <a class="lobster-font" ng-click="vm.editNameClick()" ng-show="!vm.showNameEdit">{{vm.userName}}</a>
-                    <form ng-submit="vm.validateNewName(vm.userName)" ng-show="vm.showNameEdit">
-                        <input class="" type="text" placeholder="Your name" ng-model="vm.userName">
-                        </input>
-                    </form>
-                </h2>
-                <h3 class="email"> {{vm.userEmail}} </h3>
+    <ion-content>
 
-                <br>
-                <br>
+        <ion type="item-text-wrap">
+            <img class="profilpic" ng-src="{{vm.friend.face}}">
+            <br>
+            <h2 class="profilname">
+                <a class="lobster-font" ng-click="vm.editNameClick()" ng-show="!vm.showNameEdit">{{vm.friend.name}}</a>
 
-                <div class="list">
+            </h2>
+            <h3 class="email"> {{vm.friend.status}} </h3>
 
-                    <a class="item item-icon-left" ng-click="vm.editTopClick()">
-                        <i class="icon ion-music-note"></i> Top song
-                        <span class="item-note" ng-show="!vm.showTopEdit">
-                            {{vm.userTopSong.artist}} - {{vm.userTopSong.title}} ({{vm.userTopSong.year}})
-                        </span>
-                    </a>
-                    <form ng-submit="vm.validateNewTop(vm.userTopSong)" ng-show="vm.showTopEdit">
-                        <input class="" type="text" placeholder="Title" ng-model="vm.userTopSong.title">
-                        </input>
-                        <input class="" type="text" placeholder="Artist" ng-model="vm.userTopSong.artist">
-                        </input>
-                        <input class="" type="text" placeholder="Year" ng-model="vm.userTopSong.year">
-                        </input>
+            <br>
+            <br>
 
-                        <button type="submit" class="button button-block button-positive">Save</button>
+            <div class="list">
+                <a class="item item-icon-left">
+                    <i class="icon ion-music-note"></i> Top song
+                    <span class="item-note">
+                        {{vm.friend.topSong.artist}} - {{vm.friend.topSong.title}} ({{vm.friend.topSong.year}})
+                    </span>
+                </a>
 
-                    </form>
+                <a class="item item-icon-left">
+                    <i class="icon ion-trophy"></i> Number of lists
+                    <span class="item-note">
+                        {{vm.friend.score}}
+                    </span>
+                </a>
 
-                    <a class="item item-icon-left">
-                        <i class="icon ion-information-circled"></i> Conditions of use
-                    </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-happy"></i> Friends since
+                    <span class="item-note">
+                        18/02/2015
+                    </span>
+                </a>
+            </div>
 
-                    <a class="item item-icon-left">
-                        <i class="icon ion-locked"></i> Privacy Policy
-                        <span class="item-note">
-                    </a>
+            <button class="button button-block button-assertive">
+                Delete Friend
+            </button>
 
-                    <a class="item item-icon-left">
-                        <i class="icon ion-help-buoy"></i> Support
-                        <span class="item-note">
-                    </a>
+    </ion-content>
 
-                    <a class="item item-icon-left" ng-click='vm.doLogOut()'>
-                        <i class="icon ion-log-out"></i> Log out
-                    </a>
-
-                </div>
-
-        </ion-content>
-    </div>
-</ion-modal view>
+</ion-view>

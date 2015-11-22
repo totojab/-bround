@@ -27,7 +27,7 @@ module.exports = function(app) {
 
             user.addFavorite(song);
             song.isFavorited = true;
-        }
+        };
 
         // $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
 
@@ -65,7 +65,7 @@ module.exports = function(app) {
         vm.goBack = function() {
             $state.go('tab.chatDetail', {
                 chatId: $stateParams.chatId
-            })
+            });
             player.pause();
         };
     }

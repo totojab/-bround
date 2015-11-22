@@ -3,7 +3,7 @@ var servicename = 'chats';
 
 module.exports = function(app) {
 
-    var dependencies = [];
+    var dependencies = []; // depends on friends ?
 
     function service() {
 
@@ -89,23 +89,23 @@ module.exports = function(app) {
 
         var all = function() {
             return chats;
-        }
+        };
 
         var get = function(chatId) { //Id est à prendre au sens d'index 
             return chats[chatId];
-        }
+        };
 
         var list = function(chatId, listId) {
-            return chats[chatId].lists[listId]
-        }
+            return chats[chatId].lists[listId];
+        };
 
         var remove = function(chat) {
             chats.splice(chats.indexOf(chat), 1);
-        }
+        };
 
         var removeList = function(chatId, listId) {
             chats[chatId].lists.splice(listId, 1);
-        }
+        };
 
         return {
             all: all,
