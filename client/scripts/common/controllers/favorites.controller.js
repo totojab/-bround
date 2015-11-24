@@ -42,10 +42,6 @@ module.exports = function(app) {
         //     $state.go('connexion');
         // }
 
-        // $scope.$on('$destroy', function() {
-        //     $scope.modal.remove();
-        // });
-
         // $scope.openSong = function(song) {
         //     $window.open(song.open_url, "_system");
         // };
@@ -67,6 +63,10 @@ module.exports = function(app) {
         vm.hideAccount = function() {
             vm.accountModal.hide();
         };
+
+        $scope.$on('$destroy', function() {
+            vm.accountModal.remove();
+        });
 
         // $scope.data = {
         //     showDelete: false

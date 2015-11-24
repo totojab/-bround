@@ -8,21 +8,32 @@
         </label>
         <!-- Maybe put the Title on the Modal view ? -->
 
-        <form ng-submit='vm.addSong(vm.myId)'>
-            <label class="item item-input">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="Search your song" ng-model="vm.myId">
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search your song" ng-change='vm.searchSong()' ng-model="vm.mySearch">
             </label>
-        </form>
+            <button class="button button-clear" ng-click='vm.clearSearch()'>
+                Cancel
+            </button>
+        </div>
 
-        <div ng-show="vm.currentList.length==0" class="commentaire" ng-click="vm.moveBigButton()">
+        <!-- IL FAUT EN FAIRE UN FOND -->
+        <!-- <div ng-show="vm.currentList.length==0" class="commentaire" ng-click="vm.moveBigButton()">
             <div class="text-on-blurred-dash">
                 <i id="buttons" class="icon ion-ios-musical-notes music-icon icon-bottom"></i>
                 <br>
                 <p class="coms">Create a <a class="lobster-font">playlist</a>
                     <p class="coms2">of maximum eleven <a class="lobster-font">songs</a>
             </div>
-        </div>
+        </div> -->
+
+        <ion-list>
+            </ion-item>
+            <ion-item ng-repeat="song in vm.suggestions" type="" class="item-avatar" ng-click="vm.addSongById(song.id)">
+                <img ng-src="{{song.face}}"> {{song.title}} - {{song.artist}}
+            </ion-item>
+        </ion-list>
 
         <div collection-repeat="song in vm.currentList" item-height="25%" item-width="33%">
             <span class="badge badge-assertive" ng-click="vm.removeSong($index)"><i class="ion-close-round badge-delete"></i></span>

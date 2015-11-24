@@ -6,47 +6,38 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$scope', '$state', app.name + '.player', '$ionicModal']; //$localstorage to add
+    var deps = ['$scope', '$state', app.name + '.player', '$ionicModal', app.name + '.friends', app.name + '.research']; //$localstorage to add
 
-    function controller($scope, $state, player, $ionicModal) {
+    function controller($scope, $state, player, $ionicModal, friends, research) {
         var vm = this;
         vm.controllername = fullname;
 
-        vm.currentList = [];
+        vm.currentList = []; // Songs in the playlist being built
+        vm.suggestions = []; // Songs suggested when taping in the search input.
+        vm.sendingList = []; // Friends we want to send the playlist
+
+        vm.friends = angular.copy(friends.all());
 
         // $localStorage.setObject('userFavoriteArray', []);
         // vm.chansons = player.all();
         // vm.chanson = null;
 
-        // vm.chats = Chats.all();
+        vm.searchSong = function() {
+            if (vm.mySearch.replace(/\s/g, '') !== '') {
+                research.searchSong(vm.mySearch).then(function(matches) { //commencer a chercher à partir de 3 caractères tapés
+                    vm.suggestions = matches;
+                });
+            } else {
+                vm.suggestions = [];
+            }
+        }
 
-        // // ****** Fonctions recyclées depuis le list-detail ****
-
-        // vm.refreshBlurring = function(song) {
-        //     if (song.style == 'song-blurred') {
-        //         song.style = '';
-
-        //     } else {
-        //         _.forEach(vm.currentList, function(item) {
-        //             item.style = '';
-        //         });
-
-        //         song.style = 'song-blurred';
-        //     }
-
-        // };
+        vm.clearSearch = function() {
+            vm.mySearch = "";
+            vm.suggestions = [];
+        }
 
         // // ****** Fonctions auxiliaires ****
-
-        // vm.inArray = function(string, array) {
-        //     var result = false;
-        //     for (i = 0; i < array.length; i++) {
-        //         if (array[i] == string) {
-        //             result = true;
-        //         }
-        //     }
-        //     return result;
-        // }
 
         vm.inList = function(id) {
             var res = false;
@@ -58,15 +49,9 @@ module.exports = function(app) {
             return res;
         };
 
-        // vm.swapIndexes = function(array, index1, index2) {
-        //     var tempArray = array;
-        //     array[index1] = tempArray[index2];
-        //     array[index2] = tempArray[index1];
-        // }
-
         // // ****** Fonctions d'ajout d'une chanson à la liste courante ****
 
-        vm.addSong = function(id) {
+        vm.addSongById = function(id) {
             // if (!(vm.inList(id, vm.currentList) || vm.currentList.length > 10)) {
             if (vm.currentList.length < 10) {
                 var songToAdd = player.get(id);
@@ -80,9 +65,19 @@ module.exports = function(app) {
                         style: '' //can be 'song-blurred'
                     });
                 }
-                vm.myId = '';
+                vm.mySearch = '';
             }
         };
+
+        vm.addSongByClick = function(song) { // TO BE DONE
+            if (vm.currentList.length < 10) {
+                if (!vm.inList(song.id)) {
+                    song.style = '';
+                    vm.currentList.splice(vm.currentList.length, 0, song);
+                }
+                vm.mySearch = '';
+            }
+        }
 
         vm.clearList = function() {
             vm.currentList = [];
@@ -99,14 +94,6 @@ module.exports = function(app) {
         vm.playSong = player.play;
         vm.stopSong = player.pause;
 
-        vm.validateCurrentList = function() {
-
-        };
-
-        vm.account = function() {
-            $state.go('tab.account');
-        };
-
         // ******************** Modal Contl ************************
 
         vm.sendToFriendsModal = $ionicModal.fromTemplate(require('../views/sendToFriends.html'), {
@@ -122,44 +109,40 @@ module.exports = function(app) {
             vm.sendToFriendsModal.hide();
         };
 
-        // vm.$on('$destroy', function() {
-        //     vm.modal.remove();
-        // });
+        vm.addToSendingList = function(friend) {
+            vm.sendingList.push(friend.id);
+            console.log(vm.sendingList);
+            friend.added = true; // this might cause problems if friend points to the obejct in the service 
+        };
 
-        // for (var i = vm.chats.length - 1; i >= 0; i--) {
-        //     vm.chats[i].friendClicked = false;
-        // };
+        vm.removeFromSendingList = function(friend) {
+            vm.sendingList.splice(vm.sendingList.indexOf(friend.id), 1);
+            console.log(vm.sendingList);
+            friend.added = false;
+        };
 
-        // vm.clickFriend = function($index) {
-        //         if (vm.chats[$index].friendClicked) {
-        //             vm.chats[$index].friendClicked = false;
-        //         } else {
-        //             vm.chats[$index].friendClicked = true;
-        //         }
-        //     }
-        //     //});
-        // vm.selectedCounter = 0;
+        vm.send = function() {
+            vm.sendingList = [];
+            vm.hideSendToFriends();
+
+            vm.friends = angular.copy(friends.all());
+
+            $state.go('tab.home');
+        }
+
+        vm.clearInput = function() {
+            vm.friendsFilter = "";
+        }
+
+        $scope.$on('$destroy', function() {
+            vm.sendToFriendsModal.remove();
+        });
 
         // vm.change = function(item) {
         //     if (item.selected) {
         //         vm.selectedCounter++
         //     } else {
         //         vm.selectedCounter--
-        //     }
-        // };
-
-        // vm.counterPositive = function() {
-        //     if (vm.selectedCounter == 0) {
-        //         return false;
-        //     } else {
-        //         return true;
-        //     }
-        // };
-        // vm.counterMoreOne = function() {
-        //     if (vm.selectedCounter == 1) {
-        //         return true;
-        //     } else {
-        //         return false;
         //     }
         // };
 

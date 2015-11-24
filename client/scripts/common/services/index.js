@@ -6,6 +6,7 @@ module.exports = function(app) {
     require('./friends.service')(app);
     require('./localStorage')(app);
     require('./player')(app);
+    require('./research.service')(app);
     require('./user')(app);
     // inject:end
 };

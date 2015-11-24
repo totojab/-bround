@@ -1,6 +1,3 @@
-<!-- TO DO  -->
-
-
 <ion-modal view title="Select Friends" class="sending-friends-page">
     <div class="modal">
 
@@ -10,29 +7,32 @@
         </ion-header-bar>
 
         <ion-content>
-            <div class="list list-inset">
-                <label class="item item-input " style="border-radius: 30px;">
-                    <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Search a Friend" ng-model="query">
 
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="search" placeholder="Search" ng-model='vm.friendsFilter'>
                 </label>
+                <button class="button button-clear" ng-click="vm.clearInput()">
+                    Cancel
+                </button>
             </div>
 
-            <ul ng-hide="query==''">
-                <li class="animation" ng-repeat="friend in chats | filter:query | orderBy:orderProp">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-model="friend.selected" ng-change="change(friend)" class="coms">
-                    </label> <a class="friend-name">{{friend.name}} </a>
-                </li>
-            </ul>
-            <div ng-show="query==''">
-                <i class="icon ion-search searchicon"></i>
-                <p class="coms">In order to send your list to a <a class="lobster-font">bround</a>,
-                    <p class="coms">enter his name
-            </div>
+            <ion-list>
+                <ion-item ng-repeat="friend in vm.friends | filter:vm.friendsFilter | orderBy : 'name'" class="item-avatar item-icon-right animation">
+                    <img ng-src="{{friend.face}}"> {{friend.name}}
+                    <i class="icon ion-ios-plus-outline" ng-hide='friend.added' ng-click="vm.addToSendingList(friend)"></i>
+                    <i class="icon ion-ios-plus" ng-show='friend.added' ng-click="vm.removeFromSendingList(friend)"></i>
+                </ion-item>
+            </ion-list>
+
             <div>
                 <p ng-show="counterPositive()" class="addarrow lobster-font">Send to {{selectedCounter}} bround<a ng-hide="counterMoreOne()">s</a> <i class="ion-arrow-graph-up-right"></i></p>
             </div>
+
+            <button class="button button-block button-positive" ng-click='vm.send()'>
+                Send your paylist !
+            </button>
 
         </ion-content>
     </div>

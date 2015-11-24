@@ -16,8 +16,8 @@ module.exports = function(namespace) {
     var app = angular.module(fullname, ['ui.router', 'ionic', 'ngCordova']);
     // inject:folders start
     require('./controllers')(app);
-    require('./directives')(app);
-    require('./services')(app);
+require('./directives')(app);
+require('./services')(app);
     // inject:folders end
     app.namespace = app.namespace || {};
 

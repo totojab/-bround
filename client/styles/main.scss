@@ -49,9 +49,6 @@ a {
 }
 
 
-/*Autre modifs*/
-
-
 /*CHAT PAGE */
 
 .chat-page .lastlist {
@@ -87,7 +84,7 @@ a {
 }
 
 .image3 {
-    width: 45px;
+    width: 40px;
     position: absolute;
     left: 115px;
     z-index: -20;
@@ -186,71 +183,6 @@ a {
 
 /*DASH PAGE*/
 
-.tab-dash .title-bar {
-    width: 70%;
-}
-
-.tab-dash [collection-repeat] {
-    left: 0 !important;
-    top: 0 !important;
-    position: absolute !important;
-    z-index: 1;
-    border-radius: 10px;
-}
-
-.tab-dash .text-on-blurred-image {
-    position: relative;
-    z-index: 0;
-    margin-top: -25vw;
-    /*margin-left:10%;*/
-    text-align: center;
-}
-
-.tab-dash .ion-android-add-circle {
-    font-size: 8vw;
-}
-
-.tab-dash .music-icon {
-    font-size: 18vw;
-    margin-left: 45vw;
-    position: absolute;
-    margin-top: 50vw;
-    color: $background-color;
-    -webkit-animation-duration: 1.7s;
-    -webkit-animation-iteration-count: infinite;
-}
-
-.tab-dash .coms {
-    margin-top: 65vw;
-    text-align: center;
-    font-size: 25px;
-    padding-top: 10px;
-}
-
-.tab-dash .coms2 {
-    text-align: center;
-    font-size: 25px;
-    padding-top: 10px;
-}
-
-.tab-dash .commentaire {
-    margin-top: -30vw;
-    font-weight: 100;
-    color: black;
-    height: 620px;
-    background-image: url('../images/app/guitar.jpg');
-    background-size: cover;
-}
-
-.tab-dash .lobster-font {
-    font-family: 'Lobster', cursive;
-    font-weight: 100;
-}
-
-.tab-dash .ext-on-blurred-dash {
-    //margin-top:
-}
-
 .add-song-button {
     font-size: 25px;
     display: inline-block;
@@ -272,75 +204,115 @@ a {
     border-collapse: inherit;
 }
 
-.tab-dash .nametoartist {
-    margin: 0 0 10px;
-    line-height: 9px;
-    vertical-align: text-bottom;
-    font-family: 'Lobster', cursive;
-    font-weight: 100;
-    text-align: center;
-}
-
-.tab-dash .name {
-    text-align: center;
-}
-
 .search-bar {
     width: 80vw;
     display: inline-block;
 }
 
-.tab-dash .title {
-    font-family: 'Lobster', cursive;
-}
-
-.tab-dash .name-playlist {
-    line-height: 5px;
-    margin-bottom: -25px;
-    color: black;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    letter-spacing: 0px;
-}
-
-.tab-dash .item-input-dash input[type="text"] {
-    width: 100%;
-    font-family: 'Lobster', cursive;
-    text-align: center;
-    border-radius: 20px;
-    height: 20px;
-    display: inline-block;
-}
-
-.tab-dash .item-input-list input[type="text"] {
-    width: 100%;
-    font-family: 'Lobster', cursive;
-    text-align: center;
-    border-radius: 20px;
-    height: 20px;
-    display: inline-block;
-}
-
-.tab-dash .item-input-dash {
-    border-width: 0;
-}
-
-.tab-dash .badge-delete {
-    font-size: 11px;
-    margin-left: -4px;
-    position: absolute;
-}
-
-.tab-dash .name-list {
-    margin-left: 3vw;
-}
-
-.tab-dash .item-input-list input[type="text"] {
-    font-family: 'Lobster', cursive;
-    text-align: center;
-    border-radius: 20px;
-    height: 20px;
-    display: inline-block;
-    width: 80%;
+.tab-dash {
+    .title-bar {
+        width: 70%;
+    }
+    [collection-repeat] {
+        left: 0 !important;
+        top: 0 !important;
+        position: absolute !important;
+        z-index: 1;
+        border-radius: 10px;
+    }
+    .text-on-blurred-image {
+        position: relative;
+        z-index: 0;
+        margin-top: -25vw;
+        /*margin-left:10%;*/
+        text-align: center;
+    }
+    .ion-android-add-circle {
+        font-size: 8vw;
+    }
+    .music-icon {
+        font-size: 18vw;
+        margin-left: 45vw;
+        position: absolute;
+        margin-top: 50vw;
+        color: $background-color;
+        -webkit-animation-duration: 1.7s;
+        -webkit-animation-iteration-count: infinite;
+    }
+    .coms {
+        margin-top: 65vw;
+        text-align: center;
+        font-size: 25px;
+        padding-top: 10px;
+    }
+    .coms2 {
+        text-align: center;
+        font-size: 25px;
+        padding-top: 10px;
+    }
+    .commentaire {
+        margin-top: -30vw;
+        font-weight: 100;
+        color: black;
+        height: 620px;
+        background-image: url('../images/app/guitar.jpg');
+        background-size: cover;
+    }
+    .lobster-font {
+        font-family: 'Lobster', cursive;
+        font-weight: 100;
+    }
+    .ext-on-blurred-dash {
+        //margin-top:
+    }
+    .nametoartist {
+        margin: 0 0 10px;
+        line-height: 9px;
+        vertical-align: text-bottom;
+        font-family: 'Lobster', cursive;
+        font-weight: 100;
+        text-align: center;
+    }
+    .name {
+        text-align: center;
+    }
+    .title {
+        font-family: 'Lobster', cursive;
+    }
+    .name-playlist {
+        line-height: 5px;
+        margin-bottom: -25px;
+        color: black;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        letter-spacing: 0px;
+    }
+    .item-input-dash input[type="text"] {
+        width: 100%;
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        border-radius: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+    .item-input-dash {
+        border-width: 0;
+    }
+    .badge-delete {
+        font-size: 11px;
+        margin-left: -4px;
+        position: absolute;
+    }
+    .name-list {
+        margin-left: 3vw;
+    }
+    .item-input-list input[type="text"] {
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        border-radius: 20px;
+        height: 20px;
+        display: inline-block;
+        width: 80%;
+    }
 }
 
 .tab-page .badge.badge-assertive {
@@ -409,25 +381,24 @@ a {
     margin-left: 1vw;
 }
 
-.favpage .ion-content {
-    background-color: $background-color;
-}
-
-.favpage .itemfav {
-    background-color: $background-color;
-}
-
 .grossirboutton {
     font-size: 35px;
 }
 
-.favpage .artist {
-    font-family: 'Lobster', cursive;
-}
-
-.favpage .fav-item {
-    color: black;
-    margin-top: 5px;
+.favpage {
+    .ion-content {
+        background-color: $background-color;
+    }
+    .itemfav {
+        background-color: $background-color;
+    }
+    .artist {
+        font-family: 'Lobster', cursive;
+    }
+    .fav-item {
+        color: black;
+        margin-top: 5px;
+    }
 }
 
 .icone-play-pause {
@@ -448,10 +419,6 @@ a {
     margin-left: 100px;
 }
 
-.accountpage .lobster-font {
-    font-family: 'Lobster', cursive;
-}
-
 .profilpic {
     width: 100px;
     float: left;
@@ -459,8 +426,13 @@ a {
     margin: 15px;
 }
 
-.accountpage .accounticon {
-    font-size: 20px;
+.accountpage {
+    .lobster-font {
+        font-family: 'Lobster', cursive;
+    }
+    .accounticon {
+        font-size: 20px;
+    }
 }
 
 .email {
@@ -529,30 +501,31 @@ a {
 
 /*LOGIN PAGE*/
 
-.login-view .item-input {
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    color: white;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-weight: bold;
-    letter-spacing: -2px;
-    cursor: pointer;
-    font-size: 20px;
-    border-radius: 30px;
-    text-decoration: none;
-    margin-bottom: 10vw;
-    margin-top: 10vw;
-    width: 40%;
-    border-color: black;
-    background-color: transparent;
-}
-
-.login-view textarea, .login-view input[type="text"], .login-view input[type="password"] {
-    text-align: center;
-    padding-bottom: 15px;
-    color: black;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+.login-view {
+    .item-input {
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        color: white;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-weight: bold;
+        letter-spacing: -2px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin-bottom: 10vw;
+        margin-top: 10vw;
+        width: 40%;
+        border-color: black;
+        background-color: transparent;
+    }
+    textarea, input[type="text"], input[type="password"] {
+        text-align: center;
+        padding-bottom: 15px;
+        color: black;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
 }
 
 .loginbutton {
@@ -590,63 +563,55 @@ a {
     font-size: 30px;
 }
 
-.newfriendpage .searchicon {
-    font-size: 70px;
-    color: #637aa8;
-    margin-left: 45vw;
-}
-
-.newfriendpage .ion-chevron-down {
-    font-size: 30px;
-}
-
-.newfriendpage .placeholder-icon {
-    font-size: 20px;
-}
-
-.newfriendpage .coms {
-    margin-top: 4vw;
-    text-align: center;
-    color: #637aa8;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-}
-
-.newfriendpage .addarrow {
-    text-align: center;
-    margin-top: 5vw;
-    color: #637aa8;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 20px;
-    vertical-align: text-bottom;
-}
-
-.newfriendpage .animation {
-    -webkit-transition: 0.5s;
-    -moz-animation: 0.5s;
-    -o-animation: 0.5s;
-    animation: 0.5s;
-}
-
-.newfriendpage .animation.ng-enter {
-    opacity: 0;
-}
-
-.newfriendpage .animation.ng-leave {
-    opacity: 1;
-}
-
-.newfriendpage .animation.ng-enter.ng-enter-active {
-    opacity: 1;
-}
-
-.newfriendpage .animation.ng-leave.ng-leave-active {
-    opacity: 0;
-}
-
-.newfriendpage .friend-name {
-    position: absolute;
-    margin-top: 25px;
-    margin-left: 5px;
+.newfriendpage {
+    .searchicon {
+        font-size: 70px;
+        color: #637aa8;
+        margin-left: 45vw;
+    }
+    .ion-chevron-down {
+        font-size: 30px;
+    }
+    .placeholder-icon {
+        font-size: 20px;
+    }
+    .coms {
+        margin-top: 4vw;
+        text-align: center;
+        color: #637aa8;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+    .addarrow {
+        text-align: center;
+        margin-top: 5vw;
+        color: #637aa8;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-size: 20px;
+        vertical-align: text-bottom;
+    }
+    .animation {
+        -webkit-transition: 0.5s;
+        -moz-animation: 0.5s;
+        -o-animation: 0.5s;
+        animation: 0.5s;
+    }
+    .animation.ng-enter {
+        opacity: 0;
+    }
+    .animation.ng-leave {
+        opacity: 1;
+    }
+    .animation.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    .animation.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+    .friend-name {
+        position: absolute;
+        margin-top: 25px;
+        margin-left: 5px;
+    }
 }
 
 
@@ -661,74 +626,65 @@ a {
 
 /*SENDING FRIENDS*/
 
-.sending-friends-page .icon_modal {
-    font-size: 35px;
-}
-
-.sending-friends-page .lobster-font {
-    font-family: 'Lobster', cursive;
-}
-
-.sending-friends-page .searchicon {
-    font-size: 70px;
-    color: #637aa8;
-    margin-left: 45vw;
-}
-
-.sending-friends-page .coms {
-    margin-top: 4vw;
-    text-align: center;
-    color: #637aa8;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-}
-
-.sending-friends-page .addarrow {
-    text-align: center;
-    margin-top: 5vw;
-    color: #637aa8;
-    /*font-family: 'Yanone Kaffeesatz', sans-serif;*/
-    font-size: 20px;
-    vertical-align: text-bottom;
-}
-
-.sending-friends-page .animation {
-    -webkit-transition: 0.3s;
-    -moz-animation: 0.3s;
-    -o-animation: 0.3s;
-    animation: 0.3s;
-}
-
-.sending-friends-page .animation.ng-enter {
-    opacity: 0;
-}
-
-.sending-friends-page .animation.ng-leave {
-    opacity: 1;
-}
-
-.sending-friends-page .animation.ng-enter.ng-enter-active {
-    opacity: 1;
-}
-
-.sending-friends-page .animation.ng-leave.ng-leave-active {
-    opacity: 0;
-}
-
-.sending-friends-page .friend-name {
-    position: absolute;
-    margin-top: 25px;
-    margin-left: 5px;
-}
-
-.sending-friends-page .item-input input[type="text"] {
-    width: 100%;
-    font-family: 'Lobster', cursive;
-    text-align: center;
-    border-radius: 20px;
+.sending-friends-page {
+    .icon_modal {
+        font-size: 35px;
+    }
+    .lobster-font {
+        font-family: 'Lobster', cursive;
+    }
+    .searchicon {
+        font-size: 70px;
+        color: #637aa8;
+        margin-left: 45vw;
+    }
+    .coms {
+        margin-top: 4vw;
+        text-align: center;
+        color: #637aa8;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+    .addarrow {
+        text-align: center;
+        margin-top: 5vw;
+        color: #637aa8;
+        /*font-family: 'Yanone Kaffeesatz', sans-serif;*/
+        font-size: 20px;
+        vertical-align: text-bottom;
+    }
+    .animation {
+        -webkit-transition: 0.3s;
+        -moz-animation: 0.3s;
+        -o-animation: 0.3s;
+        animation: 0.3s;
+    }
+    .animation.ng-enter {
+        opacity: 0;
+    }
+    .animation.ng-leave {
+        opacity: 1;
+    }
+    .animation.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    .animation.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+    .friend-name {
+        position: absolute;
+        margin-top: 25px;
+        margin-left: 5px;
+    }
+    .item-input input[type="text"] {
+        width: 100%;
+        font-family: 'Lobster', cursive;
+        text-align: center;
+        border-radius: 20px;
+    }
 }
 
 
-/*ALL FRIENDS PLAGE*/
+/*ALL FRIENDS PAGE*/
 
 .allfriendpage .ion-chevron-down .icon_modal {
     font-size: 8vw;

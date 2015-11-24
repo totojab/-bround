@@ -1,4 +1,4 @@
-<ion-modal view-title="Add New Friend" class="newfriendpage">
+<ion-modal view title="Add New Friend" class="newfriendpage">
     <div class="modal">
 
         <ion-header-bar class="actu_header">
@@ -7,31 +7,36 @@
         </ion-header-bar>
 
         <ion-content>
-            <div class="list list-inset">
-                <label class="item item-input">
-                    <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Search a Friend" ng-model="query">
 
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="search" placeholder="Search" ng-model='vm.friendsFilter'>
                 </label>
+                <button class="button button-clear" ng-click="vm.clearInput()">
+                    Cancel
+                </button>
             </div>
 
-            <ul ng-hide="query==''">
-                <li class="animation" ng-repeat="friend in chats | filter:query | orderBy:orderProp">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-model="friend.selected" ng-change="change(friend)" class="coms">
-                    </label> <a class="friend-name">{{friend.name}} </a>
-                </li>
-            </ul>
-            
-            <div ng-show="query==''">
+            <ion-list ng-hide='!vm.friendsFilter || vm.friendsFilter ==""'>
+                </ion-item>
+                <ion-item ng-repeat="friend in vm.friends | filter:vm.friendsFilter | orderBy : 'name'" type="" class="item-avatar item-icon-right">
+                    <img ng-src="{{friend.face}}"> {{friend.name}}
+                    <i class="icon ion-ios-plus-outline" ng-click="vm.addToFriends(friend)" ng-hide='friend.added'></i>
+                    <i class="icon ion-ios-plus" ng-show='friend.added'></i>
+                </ion-item>
+            </ion-list>
+
+            <div ng-show='!vm.friendsFilter || vm.friendsFilter ==""'>
                 <i class="icon ion-search searchicon"></i>
                 <p class="coms">In order to find a new Friend,
                     <p class="coms">enter his 'tal' name
             </div>
-            <div>
-                <p ng-show="counterPositive()" class="addarrow">Add {{selectedCounter}} friend<a ng-hide="counterMoreOne()">s</a> <i class="ion-arrow-graph-up-right"></i></p>
-            </div>
-        </ion-content>
+
+            <!--     <div>
+        <p ng-show="counterPositive()" class="addarrow">Add {{selectedCounter}} friend<a ng-hide="counterMoreOne()">s</a> <i class="ion-arrow-graph-up-right"></i></p>
+    </div>
+    </ion-content> -->
 
     </div>
 </ion-modal view>

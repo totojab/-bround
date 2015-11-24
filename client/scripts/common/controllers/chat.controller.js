@@ -6,9 +6,9 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = [app.name + '.chats', '$state', '$ionicModal', '$scope'];
+    var deps = [app.name + '.chats', '$state', '$ionicModal', '$scope', app.name + '.friends'];
 
-    function controller(Chats, $state, $ionicModal, $scope) {
+    function controller(Chats, $state, $ionicModal, $scope, friends) {
         var vm = this;
         vm.controllername = fullname;
 
@@ -16,22 +16,13 @@ module.exports = function(app) {
         // });
 
         vm.chats = Chats.all();
+        vm.friends = friends.all();
 
         vm.remove = function(chat) {
             Chats.remove(chat);
         };
 
-        // for (var i = vm.chats.length - 1; i >= 0; i--) {
-        //     vm.chats[i].friendClicked = false;
-        // };
-
-        // vm.clickFriend = function($index) {
-        //     if (vm.chats[$index].friendClicked) {
-        //         vm.chats[$index].friendClicked = false;
-        //     } else {
-        //         vm.chats[$index].friendClicked = true;
-        //     }
-        // }
+        /* ******************* MODAL CONTROL ******************* */
 
         vm.addFriendModal = $ionicModal.fromTemplate(require('../views/addFriend.html'), { // to put in a service as Josh showed
             scope: $scope,
@@ -54,37 +45,20 @@ module.exports = function(app) {
             vm.addFriendModal.remove();
         });
 
+        vm.clearInput = function() {
+            vm.friendsFilter = "";
+        }
+
+        vm.addToFriends = function(friend) {
+            friend.added = true; //be careful, it points to the service.
+        }
+
+        $scope.$on('$destroy', function() {
+            vm.addFriendModal.remove();
+        });
+
         var activate = function() {};
         activate();
-
-        // WHATS THAT ????
-
-        // vm.selectedCounter = 0;
-
-        // vm.change = function(item) {
-        //     if (item.selected) {
-        //         vm.selectedCounter++
-        //     } else {
-        //         vm.selectedCounter--
-        //     }
-        // };
-
-        // vm.counterPositive = function() {
-        //     if (vm.selectedCounter == 0) {
-        //         return false;
-        //     } else {
-        //         return true;
-        //     }
-        // };
-        // vm.counterMoreOne = function() {
-        //     if (vm.selectedCounter == 1) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // };
-
-        // vm.orderProp = 'name'
 
     }
     controller.$inject = deps;
