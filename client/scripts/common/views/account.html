@@ -12,8 +12,8 @@
                 <br>
                 <h2 class="profilname">
                     <a class="lobster-font" ng-click="vm.editNameClick()" ng-show="!vm.showNameEdit">{{vm.userName}}</a>
-                    <form ng-submit="vm.validateNewName(vm.userName)" ng-show="vm.showNameEdit">
-                        <input class="" type="text" placeholder="Your name" ng-model="vm.userName">
+                    <form ng-submit="vm.validateNewName(newName)" ng-show="vm.showNameEdit">
+                        <input class="" type="text" placeholder="Your name" ng-model="newName">
                         </input>
                     </form>
                 </h2>

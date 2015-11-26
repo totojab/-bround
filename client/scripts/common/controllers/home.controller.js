@@ -12,6 +12,7 @@ module.exports = function(app) {
         var vm = this;
         vm.controllername = fullname;
 
+        vm.listTitle = '';
         vm.currentList = []; // Songs in the playlist being built
         vm.suggestions = []; // Songs suggested when taping in the search input.
         vm.sendingList = []; // Friends we want to send the playlist
@@ -34,6 +35,7 @@ module.exports = function(app) {
 
         vm.clearSearch = function() {
             vm.mySearch = "";
+            vm.mySearch = '';
             vm.suggestions = [];
         }
 
@@ -64,16 +66,18 @@ module.exports = function(app) {
                         face: songToAdd.face,
                         style: '' //can be 'song-blurred'
                     });
+                    vm.suggestions = [];
                 }
                 vm.mySearch = '';
             }
         };
 
-        vm.addSongByClick = function(song) { // TO BE DONE
+        vm.addSongByClick = function(song) {
             if (vm.currentList.length < 10) {
                 if (!vm.inList(song.id)) {
                     song.style = '';
                     vm.currentList.splice(vm.currentList.length, 0, song);
+                    vm.suggestions = [];
                 }
                 vm.mySearch = '';
             }
@@ -81,6 +85,7 @@ module.exports = function(app) {
 
         vm.clearList = function() {
             vm.currentList = [];
+            vm.suggestions = [];
         };
 
         vm.removeSong = function(index) {
@@ -111,13 +116,11 @@ module.exports = function(app) {
 
         vm.addToSendingList = function(friend) {
             vm.sendingList.push(friend.id);
-            console.log(vm.sendingList);
             friend.added = true; // this might cause problems if friend points to the obejct in the service 
         };
 
         vm.removeFromSendingList = function(friend) {
             vm.sendingList.splice(vm.sendingList.indexOf(friend.id), 1);
-            console.log(vm.sendingList);
             friend.added = false;
         };
 
@@ -128,6 +131,10 @@ module.exports = function(app) {
             vm.friends = angular.copy(friends.all());
 
             $state.go('tab.home');
+
+            vm.mySearch = '';
+            vm.suggestions = [];
+            vm.currentList = [];
         }
 
         vm.clearInput = function() {

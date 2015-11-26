@@ -38,30 +38,6 @@ module.exports = function(app) {
         //     $scope.selectedIndex = $index;
         // };
 
-        // $scope.containSong = function(arrayOfSongs, song) {
-        //     for (var i = arrayOfSongs.length - 1; i >= 0; i--) {
-        //         if (arrayOfSongs[i].id == song.id) {
-        //             return true;
-        //         }
-        //     }
-        //     return false;
-        // }
-
-        // $scope.addSongToFavorites = function(song) {
-        //     $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
-        //     if (!$scope.containSong($rootScope.myFavorites, song)) {
-        //         $localStorage.addElement('userFavoriteArray', song);
-        //         User.newFavorites++;
-        //         $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
-        //     }
-        // };
-
-        // $scope.removeSongFromFavorites = function(song) {
-        //     $localStorage.removeElement('userFavoriteArray', song);
-        //     $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
-        //     User.newFavorites--;
-        // };
-
         vm.goBack = function() {
             $state.go('tab.chatDetail', {
                 chatId: $stateParams.chatId

@@ -3,10 +3,11 @@ var servicename = 'user';
 
 module.exports = function(app) {
 
-    var dependencies = [];
+    var dependencies = [app.name + '.$localStorage'];
 
-    function service() {
+    function service($localStorage) {
         var userInfo = {
+            userId: '00',
             name: 'Alexandre Attia',
             picture: 'https://media.licdn.com/media/AAEAAQAAAAAAAAKyAAAAJGU4ODY2YWYxLThiMjktNGMxYS1iMWY5LTE1NmJmMTI3ZDIxOQ.jpg',
             username: 'alexattia',
@@ -17,7 +18,7 @@ module.exports = function(app) {
                 album: 'Rory Gallagher',
                 year: '1971'
             },
-            score : '182',
+            score: '182',
             status: 'Feeling Caillou',
             favorites: [{
                 id: 0,
@@ -42,33 +43,51 @@ module.exports = function(app) {
 
         };
 
+        var createSession = function() {
+            $localStorage.setObject('user', userInfo);
+        }
+
         var all = function() {
-            return userInfo;
+            return $localStorage.getObject('user');
         };
 
         var favorites = function() {
-            return userInfo.favorites;
+            return $localStorage.getAttribute('user', 'favorites');
         };
 
-        var removeFavorite = function(song) {
-            userInfo.favorites.splice(userInfo.favorites.indexOf(song), 1);
+        var removeFavorite = function(index) {
+            var fav = favorites();
+            fav.splice(index, 1);
+            $localStorage.setAttribute('user', 'favorites', fav);
+            console.log(fav)
+            return fav;
         };
 
         var addFavorite = function(song) {
-            userInfo.favorites.push(song);
+            var fav = favorites();
+            fav.unshift(song);
+            $localStorage.setAttribute('user', 'favorites', fav);
+            return fav;
         };
 
-        var changeName = function(name) {
-            userInfo.name = name;
+        var changeName = function(newName) {
+            $localStorage.setAttribute('user', 'name', newName);
+            return $localStorage.getAttribute('user', 'name');
         };
 
-        var changeStatus = function(status) {
-            userInfo.status = status;
+        var changeStatus = function(newStatus) {
+            $localStorage.setAttribute('user', 'status', newStatus);
+            return $localStorage.getAttribute('user', 'status');
         };
 
         var changeTopSong = function(song) {
-            userInfo.topSong = song;
+            $localStorage.setAttribute('user', 'topSong', song);
+            return $localStorage.getAttribute('user', 'topSong');
         };
+
+        var destroySession = function() {
+            $localStorage.clearAll();
+        }
 
         return {
             all: all,
@@ -77,7 +96,9 @@ module.exports = function(app) {
             addFavorite: addFavorite,
             changeName: changeName,
             changeStatus: changeStatus,
-            changeTopSong: changeTopSong
+            changeTopSong: changeTopSong,
+            createSession: createSession,
+            destroySession: destroySession
         };
 
     }

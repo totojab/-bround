@@ -13,28 +13,25 @@ module.exports = function(app) {
         var activate = function() {};
         activate();
 
+        $scope.$on('$ionicView.enter', function(e) {
+            vm.favoriteSongs = user.favorites();
+            vm.clearInput();
+        });
+
         vm.favoriteSongs = user.favorites();
         vm.playSong = player.play;
         vm.isSongPlaying = player.isSongPlaying;
 
-        vm.removeSong = function(song) {
+        vm.removeSong = function(song, index) { // index is simply the index of the song in the favorites array
             if (player.isSongPlaying(song)) {
                 player.pause();
             }
-            user.removeFavorite(song);
+            vm.favoriteSongs = user.removeFavorite(index);
         };
 
         vm.clearInput = function() {
             vm.favoritesFilter = "";
         };
-
-        // $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');
-
-        // $scope.refreshFavorites = function(){
-        //   $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray'); 
-        //  };
-
-        // $scope.profils = Profil.all();
 
         // $scope.logout = function() {
         //     User.destroySession();
@@ -72,7 +69,7 @@ module.exports = function(app) {
         //     showDelete: false
         // };
         var userInfo = user.all();
-        vm.userName = userInfo.name; //nouvelle instance
+        vm.userName = userInfo.name;
         vm.userStatus = userInfo.status;
         vm.facePicture = userInfo.picture;
         vm.userEmail = userInfo.email;
@@ -84,9 +81,8 @@ module.exports = function(app) {
         };
         vm.validateNewName = function(myName) {
             if (myName.replace(/\s/g, '') !== '') { //If user enters a blank string, his name won't be changed
-                user.changeName(myName);
+                vm.userName = user.changeName(myName);
             }
-            vm.userName = userInfo.name;
             vm.showNameEdit = false;
         };
 
@@ -95,8 +91,7 @@ module.exports = function(app) {
             vm.showStatusEdit = true;
         };
         vm.validateNewStatus = function(myStatus) {
-            user.changeStatus(myStatus);
-            vm.userStatus = userInfo.status;
+            vm.userStatus = user.changeStatus(myStatus);
 
             if (myStatus.replace(/\s/g, '') !== '') { //If the status is now blank, we should let the possibility to add one later . 
                 vm.showStatusEdit = false;
@@ -124,6 +119,7 @@ module.exports = function(app) {
 
         vm.doLogOut = function() { //should be called after a validation box is displayed and accepted
             vm.hideAccount();
+            user.destroySession();
             $state.go('login');
         };
     }

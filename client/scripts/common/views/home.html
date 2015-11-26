@@ -3,7 +3,7 @@
 
         <label class="item item-input">
             <a class="title-list">Title :</a>
-            <input class="name-list" type="text" placeholder="Name of your playlist">
+            <input class="name-list" type="text" placeholder="Name of your playlist" ng-model="vm.listTitle">
             </input>
         </label>
         <!-- Maybe put the Title on the Modal view ? -->
@@ -30,7 +30,7 @@
 
         <ion-list>
             </ion-item>
-            <ion-item ng-repeat="song in vm.suggestions" type="" class="item-avatar" ng-click="vm.addSongById(song.id)">
+            <ion-item ng-repeat="song in vm.suggestions | limitTo:5" type="" class="item-avatar" ng-click="vm.addSongByClick(song)">
                 <img ng-src="{{song.face}}"> {{song.title}} - {{song.artist}}
             </ion-item>
         </ion-list>

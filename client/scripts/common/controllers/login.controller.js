@@ -5,9 +5,9 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$state'];
+    var deps = ['$state', app.name + '.user'];
 
-    function controller($state) {
+    function controller($state, user) {
         var vm = this;
         vm.controllername = fullname;
         var activate = function() {};
@@ -21,6 +21,7 @@ module.exports = function(app) {
 
         vm.connect = function() {
             if (vm.credentials.username === 'Alex' && vm.credentials.password === 'toto') {
+                user.createSession();
                 $state.go('tab.home');
             }
         };
