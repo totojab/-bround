@@ -34,7 +34,6 @@ module.exports = function(app) {
         }
 
         vm.clearSearch = function() {
-            vm.mySearch = "";
             vm.mySearch = '';
             vm.suggestions = [];
         }

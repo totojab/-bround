@@ -6,15 +6,16 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = [app.name + '.chats', '$state', '$ionicModal', '$scope', app.name + '.friends'];
+    var deps = [app.name + '.chats', '$state', '$ionicModal', '$scope', app.name + '.friends', '$rootScope'];
 
-    function controller(Chats, $state, $ionicModal, $scope, friends) {
+    function controller(Chats, $state, $ionicModal, $scope, friends, $rootScope) {
         var vm = this;
         vm.controllername = fullname;
 
         // $scope.$on('$ionicView.enter', function(e) {
         // });
 
+        $rootScope.newFavoritesCount = 0; // counts the number of favorites added since last visit of favorites tab
         vm.chats = Chats.all();
         vm.friends = friends.all();
 

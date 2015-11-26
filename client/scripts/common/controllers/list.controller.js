@@ -6,9 +6,9 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$state', '$stateParams', app.name + '.chats', app.name + '.player', app.name + '.user', '$window', '$filter'];
+    var deps = ['$state', '$stateParams', app.name + '.chats', app.name + '.player', app.name + '.user', '$window', '$filter', '$rootScope'];
 
-    function controller($state, $stateParams, chats, player, user, $window, $filter) {
+    function controller($state, $stateParams, chats, player, user, $window, $filter, $rootScope) {
         var vm = this;
         vm.controllername = fullname;
         var activate = function() {};
@@ -27,6 +27,7 @@ module.exports = function(app) {
 
             user.addFavorite(song);
             song.isFavorited = true;
+            $rootScope.newFavoritesCount++;
         };
 
         // $rootScope.myFavorites = $localStorage.getObject('userFavoriteArray');

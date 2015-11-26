@@ -1,4 +1,8 @@
 <ion-view view-title="Share a List" class="tab-dash">
+    <ion-nav-bar class="actu_header">
+
+    </ion-nav-bar>
+
     <ion-content class="padding">
 
         <label class="item item-input">
@@ -6,7 +10,6 @@
             <input class="name-list" type="text" placeholder="Name of your playlist" ng-model="vm.listTitle">
             </input>
         </label>
-        <!-- Maybe put the Title on the Modal view ? -->
 
         <div class="bar bar-header item-input-inset">
             <label class="item-input-wrapper">
@@ -19,14 +22,14 @@
         </div>
 
         <!-- IL FAUT EN FAIRE UN FOND -->
-        <!-- <div ng-show="vm.currentList.length==0" class="commentaire" ng-click="vm.moveBigButton()">
+        <div ng-show="vm.currentList.length==0 && !vm.mySearch" class="commentaire" ng-click="vm.moveBigButton()">
             <div class="text-on-blurred-dash">
                 <i id="buttons" class="icon ion-ios-musical-notes music-icon icon-bottom"></i>
                 <br>
                 <p class="coms">Create a <a class="lobster-font">playlist</a>
                     <p class="coms2">of maximum eleven <a class="lobster-font">songs</a>
             </div>
-        </div> -->
+        </div>
 
         <ion-list>
             </ion-item>

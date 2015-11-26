@@ -1,9 +1,7 @@
 @import "../../node_modules/ionic-sdk/scss/ionic.scss";
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
-
 $background-color: #e8ecf3;
 $secondary-color: black;
-
 .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
     background-color: $background-color;
     color: black;
@@ -100,12 +98,40 @@ a {
 
 /*LIST DETAIL PAGE */
 
-.list-detail-page .nomchanson {
-    font-size: 3vw;
-}
-
-.list-detail-page .pochette {
-    line-height: 5px;
+.list-detail-page {
+    .nomchanson {
+        font-size: 3vw;
+    }
+    .pochette {
+        line-height: 5px;
+    }
+    .likesong {
+        margin-left: 50px;
+        margin-top: 70px;
+    }
+    .text-on-blurred-image {
+        position: relative;
+        z-index: 0;
+        margin-top: -35vw;
+        /*margin-left:10%;*/
+        text-align: center;
+    }
+    .nametoartist {
+        margin: 0 0 10px;
+        line-height: 9px;
+        vertical-align: text-bottom;
+        font-family: 'Lobster', cursive;
+        font-weight: 100;
+    }
+    .nametoartist h4 {
+        width: 50px;
+        color: red;
+    }
+    .hearticon {
+        font-size: 32px;
+        color: black;
+        margin-left: 0%;
+    }
 }
 
 .image-collection-list {
@@ -125,42 +151,10 @@ a {
     opacity: 0.45;
 }
 
-.list-detail-page .likesong {
-    margin-left: 50px;
-    margin-top: 70px;
-}
-
 .image-collection-list {
     background-position: center center;
     height: 100%;
     z-index: 1;
-}
-
-.list-detail-page .text-on-blurred-image {
-    position: relative;
-    z-index: 0;
-    margin-top: -35vw;
-    /*margin-left:10%;*/
-    text-align: center;
-}
-
-.list-detail-page .nametoartist {
-    margin: 0 0 10px;
-    line-height: 9px;
-    vertical-align: text-bottom;
-    font-family: 'Lobster', cursive;
-    font-weight: 100;
-}
-
-.list-detail-page .nametoartist h4 {
-    width: 50px;
-    color: red;
-}
-
-.list-detail-page .hearticon {
-    font-size: 32px;
-    color: black;
-    margin-left: 0%;
 }
 
 

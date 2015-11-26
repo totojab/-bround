@@ -8,7 +8,8 @@
 [![NPM](https://nodei.co/npm/test.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/test)
 
 ## Usage
-
+To launch on the iphone run :
+```cordova run ios --device```
 
 ## Testing
 

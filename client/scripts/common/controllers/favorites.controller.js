@@ -5,17 +5,18 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$scope', app.name + '.user', app.name + '.player', '$state', '$window', '$ionicModal'];
+    var deps = ['$scope', app.name + '.user', app.name + '.player', '$state', '$window', '$ionicModal', '$rootScope'];
 
-    function controller($scope, user, player, $state, $window, $ionicModal) {
+    function controller($scope, user, player, $state, $window, $ionicModal, $rootScope) {
         var vm = this;
         vm.controllername = fullname;
         var activate = function() {};
         activate();
 
         $scope.$on('$ionicView.enter', function(e) {
-            vm.favoriteSongs = user.favorites();
             vm.clearInput();
+            vm.favoriteSongs = user.favorites();
+            $rootScope.newFavoritesCount = 0;
         });
 
         vm.favoriteSongs = user.favorites();
