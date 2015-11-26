@@ -78,6 +78,7 @@ module.exports = function(app) {
 
         vm.showNameEdit = false;
         vm.editNameClick = function() {
+            vm.newName = vm.userName;
             vm.showNameEdit = true;
         };
         vm.validateNewName = function(myName) {
