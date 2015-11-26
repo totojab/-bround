@@ -5,13 +5,19 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$state', app.name + '.user'];
+    var deps = ['$state', app.name + '.user', '$scope'];
 
-    function controller($state, user) {
+    function controller($state, user, $scope) {
         var vm = this;
         vm.controllername = fullname;
         var activate = function() {};
         activate();
+
+        $scope.$on('$viewContentLoaded', function(e) {
+            if (user.checkSession()) {
+                $state.go('tab.home');
+            }
+        });
 
         vm.credentials = {};
         vm.isUserNew = false;

@@ -89,6 +89,10 @@ module.exports = function(app) {
             $localStorage.clearAll();
         }
 
+        var checkSession = function() {
+            return $localStorage.getObject('user').userId // true only if a session is active
+        }
+
         return {
             all: all,
             favorites: favorites,
@@ -98,7 +102,8 @@ module.exports = function(app) {
             changeStatus: changeStatus,
             changeTopSong: changeTopSong,
             createSession: createSession,
-            destroySession: destroySession
+            destroySession: destroySession,
+            checkSession: checkSession
         };
 
     }
