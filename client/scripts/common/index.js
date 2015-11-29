@@ -107,6 +107,16 @@ module.exports = function(namespace) {
                     controller: fullname + '.favorites as vm'
                 }
             }
+        })
+
+        .state('tab.account', {
+            url: '/account',
+            views: {
+                'favorites': {
+                    template: require('./views/account.html'),
+                    controller: fullname + '.account as vm'
+                }
+            }
         });
 
     };

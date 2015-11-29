@@ -15,7 +15,7 @@ module.exports = function(app) {
         activate();
 
         vm.list = chats.list($stateParams.chatId, $stateParams.listId);
-        vm.listSender = chats.get($stateParams.chatId).name;
+        vm.listSender = chats.get($stateParams.chatId).name; //maybe not the best (check chats service for improvment)
 
         vm.playSong = player.play;
         vm.isSongPlaying = player.isSongPlaying;

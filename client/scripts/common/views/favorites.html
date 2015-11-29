@@ -21,7 +21,7 @@
         </div>
 
         <ion-list>
-            <ion-item ng-repeat="song in vm.favoriteSongs | filter:vm.favoritesFilter track by $index" class="item-avatar itemfav">
+            <ion-item ng-repeat="song in vm.favoriteSongs | filter:vm.favoritesFilter track by $index" class="item-avatar itemfav" ng-click="vm.showSongProfile(song)">
 
                 <img ng-src="{{song.face}}" ng-click="vm.playSong(song)"> <i class="ion-ios-play icone-play-pause" ng-if="!vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i><i class="ion-ios-pause icone-play-pause" ng-if="vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i>
 

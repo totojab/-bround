@@ -1,0 +1,70 @@
+<ion-modal view title="" class="accountpage">
+    <div class="modal">
+
+        <ion-header-bar class="actu_header">
+            <i class="settingsicon ion-chevron-down icon_modal" ng-click="vm.hideSongProfile()"></i>
+            <h1 class="title">Song Details</h1>
+        </ion-header-bar>
+
+        <ion-content>
+
+            <ion type="item-text-wrap">
+                <img class="profilpic" ng-src="{{vm.songClicked.face}}">
+                <!-- Cover plus grande et plus carrée -->
+                <br>
+                <h2 class="profilname">
+
+                    <div class="lobster-font">{{vm.songClicked.title}}</div>
+
+                </h2>
+                by
+                <h3 class="email"> {{vm.songClicked.artist}} </h3>
+
+                <br>
+                <br>
+
+                <div class="list">
+
+                    <a class="item item-icon-left" ng-click="vm.editTopClick()">
+                        <i class="icon ion-music-note"></i> Album
+                        <span class="item-note">
+                            California Roll
+                        </span>
+                    </a>
+
+                    <a class="item item-icon-left">
+                        <i class="icon ion-trophy"></i> Year
+                        <span class="item-note">
+                            2015
+                        </span>
+                    </a>
+
+                    <!-- IONICONS -->
+
+                    <a class="item item-icon-left">
+                        <i class="icon ion-information-circled"></i> Sent by
+                        <span class="item-note">
+                            {{vm.songClicked.favoritedFrom}}
+                        </span>
+                    </a>
+
+                    <a class="item item-icon-left">
+                        <i class="icon ion-locked"></i> Favorited on
+                        <span class="item-note">
+                            {{vm.songClicked.favoritedOn}}
+                        </span>
+                    </a>
+
+                    <button class="button button-block button-positive" ng-click="vm.playSong(vm.songClicked)">
+                        <h4 ng-show="!vm.isSongPlaying(vm.songClicked)">Play Preview</h4>
+                        <h4 ng-show="vm.isSongPlaying(vm.songClicked)">Pause</h4>
+
+                    </button>
+
+                </div>
+            </ion>
+
+        </ion-content>
+
+    </div>
+</ion-modal view>

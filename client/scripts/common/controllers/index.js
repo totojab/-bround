@@ -2,6 +2,7 @@
 
 module.exports = function(app) {
     // inject:start
+    require('./account.controller')(app);
     require('./chat.controller')(app);
     require('./chatDetail.controller')(app);
     require('./favorites.controller')(app);

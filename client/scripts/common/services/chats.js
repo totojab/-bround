@@ -19,6 +19,7 @@ module.exports = function(app) {
                 received: true,
                 title: 'Sunset in the Morning',
                 comment: 'comment',
+                senderId:1,
                 receivedOn: '11/10/02/23:00',
                 songs: [{
                     id: 4,
