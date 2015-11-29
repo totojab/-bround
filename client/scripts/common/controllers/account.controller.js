@@ -66,7 +66,6 @@ module.exports = function(app) {
         };
 
         vm.doLogOut = function() { //should be called after a validation box is displayed and accepted
-            vm.hideAccount();
             user.destroySession();
             $state.go('login');
         };

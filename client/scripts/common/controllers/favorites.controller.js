@@ -38,6 +38,9 @@ module.exports = function(app) {
             $state.go('policy');
         };
 
+        vm.showAccount = function() {
+            $state.go('tab.account');
+        };
 
         // *************************> SONG PROFILE Modal Control <************************* 
         vm.songProfileModal = $ionicModal.fromTemplate(require('../views/songProfile.html'), {

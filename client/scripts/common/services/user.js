@@ -59,7 +59,6 @@ module.exports = function(app) {
             var fav = favorites();
             fav.splice(index, 1);
             $localStorage.setAttribute('user', 'favorites', fav);
-            console.log(fav)
             return fav;
         };
 

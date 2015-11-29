@@ -21,17 +21,20 @@
         </div>
 
         <ion-list>
-            <ion-item ng-repeat="song in vm.favoriteSongs | filter:vm.favoritesFilter track by $index" class="item-avatar itemfav" ng-click="vm.showSongProfile(song)">
+            <ion-item ng-repeat="song in vm.favoriteSongs | filter:vm.favoritesFilter track by $index" class="item-avatar itemfav">
 
                 <img ng-src="{{song.face}}" ng-click="vm.playSong(song)"> <i class="ion-ios-play icone-play-pause" ng-if="!vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i><i class="ion-ios-pause icone-play-pause" ng-if="vm.isSongPlaying(song)" ng-click="vm.playSong(song)"></i>
 
-                <p class="fav-item"><b>{{song.title}}</b> -
-                    <span class="artist">{{song.artist}}</span> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i></p>
-                <h5>Added on: {{song.favoritedOn}}, sent by: {{song.favoritedFrom}}</h5>
+                <div clas="description" ng-click="vm.showSongProfile(song)">
+                    <p class="fav-item"><b>{{song.title}}</b> -
+                        <span class="artist">{{song.artist}}</span> <i class="icon-right ion-chevron-right" ng-click="openSong(song)"></i>
+                    </p>
+                    <h5>Added on: {{song.favoritedOn}}, sent by: {{song.favoritedFrom}}</h5>
 
-                <ion-option-button class="button-assertive" ng-click="vm.removeSong(song, $index)">
-                    <i class="ion-close-circled deletebutton"> </i>
-                </ion-option-button>
+                    <ion-option-button class="button-assertive" ng-click="vm.removeSong(song, $index)">
+                        <i class="ion-close-circled deletebutton"> </i>
+                    </ion-option-button>
+                </div>
 
             </ion-item>
         </ion-list>
