@@ -1,0 +1,20 @@
+<ion-modal view title="Select Friends" class="sending-friends-page">
+    <div class="modal">
+
+        <ion-header-bar class="actu_header">
+            <i class=" ion-chevron-down icon_modal" ng-click="vm.hideContact()"></i>
+            <h1 class="title">Write us something !</h1>
+        </ion-header-bar>
+
+        <ion-content>
+                <form ng-submit="vm.sendMessage()">
+                    <input class="" type="text" placeholder="Your message" ng-model="vm.messageToTeam">
+                    </input>
+
+                    <button type="submit" class="button button-block button-positive">Send</button>
+                </form>
+
+                <h4>{{vm.warningMessage}}</h4>
+        </ion-content>
+    </div>
+</ion-modal view>

@@ -66,12 +66,10 @@ module.exports = function(app) {
         };
 
         vm.wantLogout = false;
-        vm.showConfirmLogout = function() {
-            vm.wantLogout = true;
+        vm.confirmLogout = function() {
+            vm.wantLogout = !vm.wantLogout;
         }
-        vm.hideConfirmLogout = function() {
-            vm.wantLogout = false;
-        }
+
         vm.doLogOut = function() {
             vm.wantLogout = false;
             user.destroySession();
@@ -96,6 +94,39 @@ module.exports = function(app) {
         $scope.$on('$destroy', function() {
             vm.policyModal.remove();
         });
+
+        // *************************> CONTACT Modal Control <************************* 
+        vm.contactModal = $ionicModal.fromTemplate(require('../views/contactForm.html'), {
+            scope: $scope,
+            animation: 'slide-in-up'
+        });
+
+        vm.showContact = function(song) {
+            vm.songClicked = song;
+            vm.contactModal.show();
+        };
+
+        vm.hideContact = function() {
+            vm.contactModal.hide();
+        };
+
+        $scope.$on('$destroy', function() {
+            vm.contactModal.remove();
+        });
+
+        vm.messageToTeam = '';
+        vm.warningMessage = '';
+
+        vm.sendMessage = function() {
+            if (vm.messageToTeam.replace(/\s/g, '') !== '') {
+                vm.hideContact();
+                vm.messageToTeam = '';
+                vm.warningMessage = '';
+            }else{
+                vm.warningMessage='Your message is Empty'
+            }
+        }
+
     }
 
     controller.$inject = deps;

@@ -70,12 +70,12 @@
                     <span class="item-note"></span>
                 </a>
 
-                <a class="item item-icon-left">
+                <a class="item item-icon-left" ng-click="vm.showContact()">
                     <i class="icon ion-help-buoy"></i> Contact us
                     <span class="item-note"></span>
                 </a>
 
-                <a class="item item-icon-left" ng-click="vm.showConfirmLogout()">
+                <a class="item item-icon-left" ng-click="vm.confirmLogout()">
                     <i class="icon ion-log-out"></i> Log out
                 </a>
 
@@ -83,7 +83,7 @@
                     <b>Confirm log out</b>
                 </button>
 
-                <button class="button button-block button-positive" ng-show="vm.wantLogout" ng-click='vm.hideConfirmLogout()'>
+                <button class="button button-block button-positive" ng-show="vm.wantLogout" ng-click='vm.confirmLogout()'>
                     <b>Discard</b>
                 </button>
 
