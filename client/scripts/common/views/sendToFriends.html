@@ -19,20 +19,18 @@
             </div>
 
             <ion-list>
-                <ion-item ng-repeat="friend in vm.friends | filter:vm.friendsFilter | orderBy : 'name'" class="item-avatar item-icon-right animation">
+                <ion-item ng-repeat="friend in vm.friends | filter:vm.friendsFilter | orderBy : 'name'" class="item-avatar item-icon-right animation" ng-click="vm.addToSendingList(friend)">
                     <img ng-src="{{friend.face}}"> {{friend.name}}
-                    <i class="icon ion-ios-plus-outline" ng-hide='friend.added' ng-click="vm.addToSendingList(friend)"></i>
-                    <i class="icon ion-ios-plus" ng-show='friend.added' ng-click="vm.removeFromSendingList(friend)"></i>
+                    <i class="icon ion-ios-plus-outline" ng-hide='friend.added'></i>
+                    <i class="icon ion-ios-plus" ng-show='friend.added'></i>
                 </ion-item>
             </ion-list>
-
-            <div>
-                <p ng-show="counterPositive()" class="addarrow lobster-font">Send to {{selectedCounter}} bround<a ng-hide="counterMoreOne()">s</a> <i class="ion-arrow-graph-up-right"></i></p>
-            </div>
 
             <button class="button button-block button-positive" ng-click='vm.send()'>
                 Send <b>{{vm.listTitle}}</b> !
             </button>
+
+            <h4>{{vm.warningMessage}}</h4>
 
         </ion-content>
     </div>

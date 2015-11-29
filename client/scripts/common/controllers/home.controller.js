@@ -16,12 +16,9 @@ module.exports = function(app) {
         vm.currentList = []; // Songs in the playlist being built
         vm.suggestions = []; // Songs suggested when taping in the search input.
         vm.sendingList = []; // Friends we want to send the playlist
+        vm.warningMessage = ''
 
         vm.friends = angular.copy(friends.all());
-
-        // $localStorage.setObject('userFavoriteArray', []);
-        // vm.chansons = player.all();
-        // vm.chanson = null;
 
         vm.searchSong = function() {
             if (vm.mySearch.replace(/\s/g, '') !== '') {
@@ -98,7 +95,7 @@ module.exports = function(app) {
         vm.playSong = player.play;
         vm.stopSong = player.pause;
 
-        // ******************** Modal Contl ************************
+        // ******************** SENDING TO FRIENDS Modal Control ************************
 
         vm.sendToFriendsModal = $ionicModal.fromTemplate(require('../views/sendToFriends.html'), {
             scope: $scope,
@@ -114,27 +111,28 @@ module.exports = function(app) {
         };
 
         vm.addToSendingList = function(friend) {
-            vm.sendingList.push(friend.id);
-            friend.added = true; // this might cause problems if friend points to the obejct in the service 
-        };
-
-        vm.removeFromSendingList = function(friend) {
-            vm.sendingList.splice(vm.sendingList.indexOf(friend.id), 1);
-            friend.added = false;
+            if (!friend.added) {
+                vm.sendingList.push(friend.id);
+                friend.added = true;
+            } else {
+                vm.sendingList.splice(vm.sendingList.indexOf(friend.id), 1);
+                friend.added = false;
+            }
         };
 
         vm.send = function() {
-            vm.sendingList = [];
-            vm.hideSendToFriends();
-
-            vm.friends = angular.copy(friends.all());
-
-            $state.go('tab.home');
-
-            vm.mySearch = '';
-            vm.suggestions = [];
-            vm.currentList = [];
-        }
+            if (vm.sendingList.length > 0) {
+                vm.hideSendToFriends();
+                vm.friends = angular.copy(friends.all());
+                vm.sendingList = [];
+                vm.mySearch = '';
+                vm.suggestions = [];
+                vm.currentList = [];
+                vm.warningMessage = '';
+            } else {
+                vm.warningMessage = 'Select at least one friend !'
+            }
+        };
 
         vm.clearInput = function() {
             vm.friendsFilter = "";
