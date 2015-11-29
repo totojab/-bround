@@ -65,19 +65,27 @@
                     <i class="icon ion-information-circled"></i> Conditions of use
                 </a>
 
-                <a class="item item-icon-left">
+                <a class="item item-icon-left" ng-click="vm.showPolicy()">
                     <i class="icon ion-locked"></i> Privacy Policy
                     <span class="item-note"></span>
                 </a>
 
                 <a class="item item-icon-left">
-                    <i class="icon ion-help-buoy"></i> Support
+                    <i class="icon ion-help-buoy"></i> Contact us
                     <span class="item-note"></span>
                 </a>
 
-                <a class="item item-icon-left" ng-click='vm.doLogOut()'>
+                <a class="item item-icon-left" ng-click="vm.showConfirmLogout()">
                     <i class="icon ion-log-out"></i> Log out
                 </a>
+
+                <button class="button button-block button-assertive" ng-show="vm.wantLogout" ng-click='vm.doLogOut()'>
+                    <b>Confirm log out</b>
+                </button>
+
+                <button class="button button-block button-positive" ng-show="vm.wantLogout" ng-click='vm.hideConfirmLogout()'>
+                    <b>Discard</b>
+                </button>
 
             </div>
         </ion>

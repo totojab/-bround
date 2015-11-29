@@ -5,9 +5,9 @@ module.exports = function(app) {
     var fullname = app.name + '.' + controllername;
     /*jshint validthis: true */
 
-    var deps = ['$state', app.name + '.user'];
+    var deps = ['$scope', '$state', app.name + '.user', '$ionicModal'];
 
-    function controller($state, user) {
+    function controller($scope, $state, user, $ionicModal) {
         var vm = this;
         vm.controllername = fullname;
         var activate = function() {};
@@ -65,10 +65,37 @@ module.exports = function(app) {
             vm.showTopEdit = false;
         };
 
-        vm.doLogOut = function() { //should be called after a validation box is displayed and accepted
+        vm.wantLogout = false;
+        vm.showConfirmLogout = function() {
+            vm.wantLogout = true;
+        }
+        vm.hideConfirmLogout = function() {
+            vm.wantLogout = false;
+        }
+        vm.doLogOut = function() {
+            vm.wantLogout = false;
             user.destroySession();
             $state.go('login');
         };
+
+        // *************************> POLICY Modal Control <************************* 
+        vm.policyModal = $ionicModal.fromTemplate(require('../views/policy.html'), {
+            scope: $scope,
+            animation: 'slide-in-up'
+        });
+
+        vm.showPolicy = function(song) {
+            vm.songClicked = song;
+            vm.policyModal.show();
+        };
+
+        vm.hidePolicy = function() {
+            vm.policyModal.hide();
+        };
+
+        $scope.$on('$destroy', function() {
+            vm.policyModal.remove();
+        });
     }
 
     controller.$inject = deps;
