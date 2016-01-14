@@ -717,11 +717,21 @@ a {
 /*TAB PAGE*/
 
 .tab-page .tabs .tab-item .badge.badge-assertive, .tab-page .badge.badge-assertive {
-    background-color: #FF9696;
-    color: #fff;
+    background-color: white;
+    color: #88a7ff;
     opacity: 1;
 }
-
+.tab-page .tab-icon{
+    color: #88a7ff;
+}
+.tab-page .tab-icon-on{
+    color: $background-color;
+    background-color: #88a7ff;
+    height:45px;
+    width:45px;
+    border-radius: 70%;
+    background-size: 100px;
+}
 
 /*SENDING FRIENDS*/
 
