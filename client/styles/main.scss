@@ -1,6 +1,6 @@
 @import "../../node_modules/ionic-sdk/scss/ionic.scss";
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
-$background-color: #f8ecf3;
+$background-color: #f0eded;
 $secondary-color: black;
 .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
     background-color: $background-color;
@@ -409,20 +409,122 @@ a {
 /*ACCOUNT PAGE*/
 
 .profilname {
-    font-size: 19px;
-    margin-left: 100px;
+    position: absolute;
+    top: 160px;
+    font-size: 34px;
+    margin-left: 96px;
+    font-family: 'Helvetica', cursive;
+    color: red;
+}
+.profilname2 {
+    position: absolute;
+    top: 200px;
+    font-size: 24px;
+    margin-left: 96px;
+    font-family: 'Helvetica', cursive;
+    color: red;
+}
+.accountpic{
+    position: absolute;
+    top: 265px;
+    left: 10px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+    filter: grayscale(70%);
+}
+.accountpic2{
+    position: absolute;
+    top: 265px;
+    left: 190px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+   
+}
+.accountpic3{
+    position: absolute;
+    top: 390px;
+    left: 10px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+}
+.accountpic4{
+    position: absolute;
+    top: 390px;
+    left: 190px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+}
+.profilpic {
+    position: absolute;
+    top: 0px;
+    width: 374px;
+    height: 260px;
+    float: center;
+    border-radius: 15px;
+    filter: grayscale(90%);
+}
+.topsong-text{
+    position: absolute;
+    top:362px;
+    left: 10px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
+}
+.topsong-text1{
+    position: absolute;
+    top:345px;
+    left: 10px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    color: white;
+    background-color:  rgba(0, 0, 0, 0.8);
 }
 
-.profilpic {
-    width: 100px;
-    float: left;
-    border-radius: 50px;
-    margin: 15px;
+.toplist-text{
+    position: absolute;
+    top:362px;
+    left: 190px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
+}
+
+.conditions-text{
+    position: absolute;
+    top:490px;
+    left: 10px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
+}
+.team-text{
+    position: absolute;
+    top:490px;
+    left: 190px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
 }
 
 .accountpage {
+    background-color: #f0eded;
     .lobster-font {
         font-family: 'Lobster', cursive;
+        color: white;
     }
     .accounticon {
         font-size: 20px;
@@ -435,8 +537,11 @@ a {
 }
 
 .logoutbutton {
+    position: absolute;
+    top:30px;
+    right:10px;
     font-size: 30px;
-    margin-left: 20px;
+    color:black;
 }
 
 .newfavsong {

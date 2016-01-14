@@ -9,7 +9,7 @@
     <ion-content>
 
         <ion type="item-text-wrap">
-            <img class="profilpic" ng-src="{{vm.facePicture}}">
+            <img class="profilpic" src="../../../images/app/Tuilon.png">
             <br>
             <h2 class="profilname">
                 <a class="lobster-font" ng-click="vm.editNameClick()" ng-show="!vm.showNameEdit">{{vm.userName}}</a>
@@ -19,25 +19,21 @@
                 </form>
             </h2>
 
-            <h3 class="email"> {{vm.userEmail}} </h3>
-
-            <h2 class="profilname">
+           
+            <h2 class="profilname2">
                 <a class="lobster-font" ng-click="vm.editStatusClick()" ng-show="!vm.showStatusEdit">{{vm.userStatus}}</a>
                 <form ng-submit="vm.validateNewStatus(vm.userStatus)" ng-show="vm.showStatusEdit">
                     <input class="" type="text" placeholder="Your status" ng-model="vm.userStatus">
                     </input>
                 </form>
             </h2>
-
-            <br>
-            <br>
-
-            <div class="list">
-
-                <a class="item item-icon-left" ng-click="vm.editTopClick()">
-                    <i class="icon ion-music-note"></i> Top song
-                    <span class="item-note" ng-show="!vm.showTopEdit">
-                        {{vm.userTopSong.artist}} - {{vm.userTopSong.title}} ({{vm.userTopSong.year}})
+            <div>
+                
+                <a  ng-click="vm.editTopClick()">
+                    <img class="accountpic" src="../../../images/app/never.png ">
+                  <div class="topsong-text1"> <i class="icon ion-music-note"></i> Top song</div>
+                    <span class="topsong-text" ng-show="!vm.showTopEdit">
+                        {{vm.userTopSong.artist}} - {{vm.userTopSong.title}}
                     </span>
                 </a>
                 <form ng-submit="vm.validateNewTop(vm.userTopSong)" ng-show="vm.showTopEdit">
@@ -52,31 +48,30 @@
 
                 </form>
 
-                <a class="item item-icon-left">
-                    <i class="icon ion-trophy"></i> Number of lists
-                    <span class="item-note">
+                <a class="item-icon-left">
+                     <img class="accountpic2" src="../../../images/app/List.jpg ">
+                    <div class="toplist-text"> <i class="ion-trophy"></i> Number of lists </div> <span class="item-note">
                         {{vm.userScore}}
                     </span>
+                   
                 </a>
 
                 <!-- PUT A SPACE HERE, MAYBE CARDS ??? -->
 
-                <a class="item item-icon-left">
-                    <i class="icon ion-information-circled"></i> Conditions of use
+                <a class="item-icon-left">
+                    <img class="accountpic3" src="../../../images/app/Disturb.jpg ">
+                    <div class="conditions-text"> <i class="ion-information-circled"></i> Conditions of use</div>
                 </a>
 
-                <a class="item item-icon-left" ng-click="vm.showPolicy()">
-                    <i class="icon ion-locked"></i> Privacy Policy
+                <a class=" item-icon-left" ng-click="vm.showContact()">
+                    <img class="accountpic4" src="../../../images/app/Team.jpg ">
+                    <div class="team-text">
+                    <i class="ion-help-buoy"></i> Contact us</div>
                     <span class="item-note"></span>
                 </a>
 
-                <a class="item item-icon-left" ng-click="vm.showContact()">
-                    <i class="icon ion-help-buoy"></i> Contact us
-                    <span class="item-note"></span>
-                </a>
-
-                <a class="item item-icon-left" ng-click="vm.confirmLogout()">
-                    <i class="icon ion-log-out"></i> Log out
+                <a class=" item-icon-left logoutbutton" ng-click="vm.confirmLogout()">
+                    <i class="icon ion-log-out"></i>
                 </a>
 
                 <button class="button button-block button-assertive" ng-show="vm.wantLogout" ng-click='vm.doLogOut()'>

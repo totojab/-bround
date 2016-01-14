@@ -13,10 +13,9 @@ module.exports = function(app) {
             username: 'alexattia',
             email: 'alexattia18@gmail.com',
             topSong: {
-                title: 'I Fall Apart',
-                artist: 'Rory Gallagher',
-                album: 'Rory Gallagher',
-                year: '1971'
+                title: 'Never Too Much',
+                artist: 'Luther Vandroos',
+                face: 'http://services.insidetameside.com/radio/vis/artists/Luther%20Vandross/Never%20too%20much.png',
             },
             score: '182',
             status: 'Feeling Caillou',
