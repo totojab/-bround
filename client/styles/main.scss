@@ -1,6 +1,6 @@
 @import "../../node_modules/ionic-sdk/scss/ionic.scss";
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
-$background-color: #e8ecf3;
+$background-color: #f0eded;
 $secondary-color: black;
 .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
     background-color: $background-color;
@@ -16,6 +16,7 @@ a {
 
 .tabs-striped .tabs {
     background-color: $background-color;
+    height: 70px;
 }
 
 .tabs-striped.tabs-color-dark .tab-item.tab-item-active, .tabs-striped.tabs-color-dark .tab-item.active, .tabs-striped.tabs-color-dark .tab-item.activated {
@@ -409,20 +410,122 @@ a {
 /*ACCOUNT PAGE*/
 
 .profilname {
-    font-size: 19px;
-    margin-left: 100px;
+    position: absolute;
+    top: 160px;
+    font-size: 34px;
+    margin-left: 96px;
+    font-family: 'Helvetica', cursive;
+    color: red;
+}
+.profilname2 {
+    position: absolute;
+    top: 200px;
+    font-size: 24px;
+    margin-left: 96px;
+    font-family: 'Helvetica', cursive;
+    color: red;
+}
+.accountpic{
+    position: absolute;
+    top: 265px;
+    left: 10px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+    filter: grayscale(70%);
+}
+.accountpic2{
+    position: absolute;
+    top: 265px;
+    left: 190px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+   
+}
+.accountpic3{
+    position: absolute;
+    top: 390px;
+    left: 10px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+}
+.accountpic4{
+    position: absolute;
+    top: 390px;
+    left: 190px;
+    width: 168px;
+    height: 122px;
+    border-radius: 15px;
+}
+.profilpic {
+    position: absolute;
+    top: 0px;
+    width: 374px;
+    height: 260px;
+    float: center;
+    border-radius: 15px;
+    filter: grayscale(90%);
+}
+.topsong-text{
+    position: absolute;
+    top:362px;
+    left: 10px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
+}
+.topsong-text1{
+    position: absolute;
+    top:345px;
+    left: 10px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    color: white;
+    background-color:  rgba(0, 0, 0, 0.8);
 }
 
-.profilpic {
-    width: 100px;
-    float: left;
-    border-radius: 50px;
-    margin: 15px;
+.toplist-text{
+    position: absolute;
+    top:362px;
+    left: 190px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
+}
+
+.conditions-text{
+    position: absolute;
+    top:490px;
+    left: 10px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
+}
+.team-text{
+    position: absolute;
+    top:490px;
+    left: 190px;
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    background-color:  rgba(0, 0, 0, 0.6);
+    color:white;
 }
 
 .accountpage {
+    background-color: #f0eded;
     .lobster-font {
         font-family: 'Lobster', cursive;
+        color: white;
     }
     .accounticon {
         font-size: 20px;
@@ -435,8 +538,11 @@ a {
 }
 
 .logoutbutton {
+    position: absolute;
+    top:30px;
+    right:10px;
     font-size: 30px;
-    margin-left: 20px;
+    color:black;
 }
 
 .newfavsong {
@@ -612,12 +718,35 @@ a {
 /*TAB PAGE*/
 
 .tab-page .tabs .tab-item .badge.badge-assertive, .tab-page .badge.badge-assertive {
-    background-color: #FF9696;
-    color: #fff;
+    background-color: white;
+    color: #88a7ff;
     opacity: 1;
 }
-
-
+.tab-page .tab-icon{
+    color: #88a7ff;
+}
+.tab-page .tab-icon-on{
+    color: $background-color;
+    background-color: #88a7ff;
+    height:45px;
+    width:45px;
+    border-radius: 70%;
+    background-position: bottom;
+}
+.tabs .icon.add-on{
+    background-repeat: no-repeat;
+  background-position: 50%;
+  height: 45px;
+  background-image: url('../../../images/app/add.on.png');
+  background-size:contain;
+}
+.tabs .icon.add-off{
+    background-repeat: no-repeat;
+  background-position: 50%;
+  height: 45px;
+  background-image: url('../../../images/app/add.off.png');
+  background-size:contain;
+}
 /*SENDING FRIENDS*/
 
 .sending-friends-page {

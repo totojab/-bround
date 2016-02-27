@@ -12,10 +12,11 @@ module.exports = function(app) {
             name: 'Alex Attia',
             face: 'https://media.licdn.com/media/AAEAAQAAAAAAAAKyAAAAJGU4ODY2YWYxLThiMjktNGMxYS1iMWY5LTE1NmJmMTI3ZDIxOQ.jpg',
             topSong: {
-                title: 'I Fall Apart',
-                artist: 'Rory Gallagher',
+                title: 'Never Too Much',
+                artist: 'Luther Vandroos',
                 album: 'Rory Gallagher',
-                year: '1971'
+                face: 'http://services.insidetameside.com/radio/vis/artists/Luther%20Vandross/Never%20too%20much.png',
+                year: '1971',
             },
             status: 'Feeling Caillou',
             score: '182',
