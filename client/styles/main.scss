@@ -16,6 +16,7 @@ a {
 
 .tabs-striped .tabs {
     background-color: $background-color;
+    height: 70px;
 }
 
 .tabs-striped.tabs-color-dark .tab-item.tab-item-active, .tabs-striped.tabs-color-dark .tab-item.active, .tabs-striped.tabs-color-dark .tab-item.activated {
@@ -730,9 +731,22 @@ a {
     height:45px;
     width:45px;
     border-radius: 70%;
-    background-size: 100px;
+    background-position: bottom;
 }
-
+.tabs .icon.add-on{
+    background-repeat: no-repeat;
+  background-position: 50%;
+  height: 45px;
+  background-image: url('../../../images/app/add.on.png');
+  background-size:contain;
+}
+.tabs .icon.add-off{
+    background-repeat: no-repeat;
+  background-position: 50%;
+  height: 45px;
+  background-image: url('../../../images/app/add.off.png');
+  background-size:contain;
+}
 /*SENDING FRIENDS*/
 
 .sending-friends-page {

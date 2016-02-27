@@ -17,7 +17,6 @@ module.exports = function(app) {
                 album: 'Rory Gallagher',
                 face: 'http://services.insidetameside.com/radio/vis/artists/Luther%20Vandross/Never%20too%20much.png',
                 year: '1971',
-                face
             },
             status: 'Feeling Caillou',
             score: '182',
